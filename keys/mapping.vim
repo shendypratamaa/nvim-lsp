@@ -4,8 +4,6 @@ inoremap kj <Esc>
 inoremap jj <Esc>
 inoremap kk <Esc>
 inoremap kl <Esc>
-inoremap lk <Esc>
-inoremap ll <Esc>
 
 " TAB in general mode will move to text buffer
 " TAB in general mode will move to text buffer

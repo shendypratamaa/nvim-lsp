@@ -3,6 +3,7 @@ source ~/.config/nvim/plugins/plug.vim
 source ~/.config/nvim/general/settings.vim
 
 " configuration themes
+
 let g:nvcode_termcolors=256
 
 colorscheme dracula
@@ -16,17 +17,16 @@ endif
 
 " ============================================================ " 
 
-" nvim-lsp-lua
-luafile ~/.config/nvim/lua/nvim-lspconfig.lua
-luafile ~/.config/nvim/lua/Plugins/nvim-lsp-installer.lua
-luafile ~/.config/nvim/lua/plugins/trouble.lua
+" nvim-lsp-lua-snippets
+luafile ~/.config/nvim/lua/user/lsp/init.lua
+luafile ~/.config/nvim/lua/user/nvimtree.lua
+luafile ~/.config/nvim/lua/user/trouble.lua
 
 " keymap
 source  ~/.config/nvim/keys/mapping.vim
 source  ~/.config/nvim/keys/whichkey.vim
 
 " telescope file-exp
-luafile ~/.config/nvim/lua/plugins/nvimtree.lua
 source  ~/.config/nvim/intellisense/telescope.lua
 
 " collaboration tools
@@ -40,4 +40,5 @@ source  ~/.config/nvim/themes/indentblankline.lua
 source  ~/.config/nvim/themes/colorizer.lua
 source  ~/.config/nvim/themes/bufferline.lua
 
-
+" beautify source code
+luafile ~/.config/nvim/lua/user/cmp.lua

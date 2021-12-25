@@ -11,23 +11,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " snippets
   Plug 'folke/trouble.nvim'
+  Plug 'tpope/vim-commentary'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/nvim-cmp'
 
-  
   " utils - themes - extentions
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'kyazdani42/nvim-tree.lua'
-
-  Plug 'christoomey/vim-tmux-navigator'
   Plug 'liuchengxu/vim-which-key'
   Plug 'akinsho/bufferline.nvim'
   Plug 'glepnir/dashboard-nvim'
-  Plug 'tpope/vim-commentary'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'p00f/nvim-ts-rainbow'
-  Plug 'simeji/winresizer'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'windwp/nvim-ts-autotag'
   Plug 'jiangmiao/auto-pairs'
@@ -36,8 +34,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 " collaborator
   Plug 'kdheepak/lazygit.nvim'
 
-" search
+" search - exps - navigator
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'simeji/winresizer'
+
 
 call plug#end()
