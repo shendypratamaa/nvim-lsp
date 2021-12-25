@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -10,12 +9,12 @@ M.setup = function()
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = ""})
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local config = {
     -- disable virtual text
-    virtual_text = true,
+    virtual_text = false,
     -- show signs
     signs = {
       active = signs,
@@ -45,7 +44,6 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
