@@ -58,7 +58,7 @@ require'nvim-tree'.setup {
 }
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
--- default mappings
+
 local list = {
   { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
   { key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
