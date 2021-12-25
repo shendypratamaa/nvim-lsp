@@ -11,7 +11,7 @@ colorscheme dracula
 if (has("termguicolors"))
   set termguicolors
   hi Normal guibg=NONE ctermbg=NONE
-  hi clear cursorline
+  " hi clear cursorline
   hi Search guibg=#ff9df0 guifg=NONE
 endif
 
@@ -40,5 +40,5 @@ source  ~/.config/nvim/themes/indentblankline.lua
 source  ~/.config/nvim/themes/colorizer.lua
 source  ~/.config/nvim/themes/bufferline.lua
 
-" beautify source code
+" nvim-cmp
 luafile ~/.config/nvim/lua/user/cmp.lua

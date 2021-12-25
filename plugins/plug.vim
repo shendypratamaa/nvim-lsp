@@ -11,10 +11,18 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " snippets
   Plug 'folke/trouble.nvim'
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'rafamadriz/friendly-snippets'
   Plug 'tpope/vim-commentary'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/vim-vsnip'
+
+  " cmp plugins
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lua'
 
   " utils - themes - extentions
   Plug 'kyazdani42/nvim-web-devicons'
