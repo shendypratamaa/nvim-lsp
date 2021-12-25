@@ -18,7 +18,6 @@ require('telescope').setup{
       '--smart-case',
       '--trim'
     },
-    buffer_previewer_maker = new_maker,
     prompt_prefix = "🔎 ",
     selection_caret = "> ",
     entry_prefix = "",
