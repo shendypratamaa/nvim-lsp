@@ -1,6 +1,6 @@
 "wrapper-vim-plug
-source ~/.config/nvim/plugins/plug.vim
-source ~/.config/nvim/general/settings.vim
+source ~/.config/nvim/vimscript/vim-plug/plug.vim
+source ~/.config/nvim/vimscript/settings.vim
 
 " configuration themes
 
@@ -23,22 +23,22 @@ luafile ~/.config/nvim/lua/user/nvimtree.lua
 luafile ~/.config/nvim/lua/user/trouble.lua
 
 " keymap
-source  ~/.config/nvim/keys/mapping.vim
-source  ~/.config/nvim/keys/whichkey.vim
+source  ~/.config/nvim/vimscript/mapping.vim
+source  ~/.config/nvim/vimscript/whichkey.vim
 
 " telescope file-exp
-source  ~/.config/nvim/intellisense/telescope.lua
+source  ~/.config/nvim/lua/user/telescope.lua
 
 " collaboration tools
-source  ~/.config/nvim/intellisense/lazygit.vim
+source  ~/.config/nvim/vimscript/lazygit.vim
 
 " themes and utils 
-source  ~/.config/nvim/intellisense/treesitter.lua
-source  ~/.config/nvim/themes/dashboard.vim
-source  ~/.config/nvim/themes/lualine.lua
-source  ~/.config/nvim/themes/indentblankline.lua
-source  ~/.config/nvim/themes/colorizer.lua
-source  ~/.config/nvim/themes/bufferline.lua
+source  ~/.config/nvim/lua/user/treesitter.lua
+source  ~/.config/nvim/vimscript/dashboard.vim
+source  ~/.config/nvim/lua/user/lualine.lua
+source  ~/.config/nvim/lua/user/indentblankline.lua
+source  ~/.config/nvim/lua/user/colorizer.lua
+source  ~/.config/nvim/lua/user/bufferline.lua
 
 " nvim-cmp
 luafile ~/.config/nvim/lua/user/cmp.lua
