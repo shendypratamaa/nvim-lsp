@@ -1,4 +1,4 @@
-"wrapper-vim-plug
+" wrapper-vim-plug
 source ~/.config/nvim/vimscript/vim-plug/plug.vim
 source ~/.config/nvim/vimscript/settings.vim
 
@@ -13,7 +13,7 @@ source  ~/.config/nvim/vimscript/whichkey.vim
 
 let g:nvcode_termcolors=256
 
-colorscheme dracula
+colorscheme palenight
 
 if(has('termguicolors'))
   set termguicolors
@@ -31,7 +31,9 @@ luafile ~/.config/nvim/lua/user/trouble.lua
 luafile ~/.config/nvim/lua/user/cmp.lua
 
 " telescope file-exp
-source  ~/.config/nvim/lua/user/telescope.lua
+luafile ~/.config/nvim/lua/user/telescope.lua
+luafile ~/.config/nvim/lua/user/null_ls.lua
+luafile ~/.config/nvim/lua/user/gitsign.lua
 
 " themes and utils
 source  ~/.config/nvim/lua/user/treesitter.lua
