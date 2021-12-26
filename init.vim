@@ -10,13 +10,14 @@ source  ~/.config/nvim/vimscript/mapping.vim
 source  ~/.config/nvim/vimscript/whichkey.vim
 
 " configuration themes
+
 let g:nvcode_termcolors=256
+
 colorscheme dracula
-if (has("termguicolors"))
+
+if(has('termguicolors'))
   set termguicolors
   hi Normal guibg=NONE ctermbg=NONE
-  " hi clear cursorline
-  hi Search guibg=#ff9df0 guifg=NONE
 endif
 
 " ============================================================ " 
@@ -32,7 +33,7 @@ luafile ~/.config/nvim/lua/user/cmp.lua
 " telescope file-exp
 source  ~/.config/nvim/lua/user/telescope.lua
 
-" themes and utils 
+" themes and utils
 source  ~/.config/nvim/lua/user/treesitter.lua
 source  ~/.config/nvim/lua/user/lualine.lua
 source  ~/.config/nvim/lua/user/indentblankline.lua
