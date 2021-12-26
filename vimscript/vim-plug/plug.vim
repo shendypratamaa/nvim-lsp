@@ -14,30 +14,31 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'L3MON4D3/LuaSnip'
   Plug 'rafamadriz/friendly-snippets'
   Plug 'tpope/vim-commentary'
+  Plug 'saadparwaiz1/cmp_luasnip'
 
   " cmp plugins
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
-  Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
 
   " utils - themes - extentions
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'p00f/nvim-ts-rainbow'
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'liuchengxu/vim-which-key'
   Plug 'akinsho/bufferline.nvim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
   Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'p00f/nvim-ts-rainbow'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'windwp/nvim-ts-autotag'
   Plug 'jiangmiao/auto-pairs'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'liuchengxu/vim-which-key'
+
 
 " collaborator
   Plug 'kdheepak/lazygit.nvim'
