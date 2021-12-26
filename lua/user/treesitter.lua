@@ -1,11 +1,20 @@
+local status_ok, treeSitter = pcall(require, 'nvim-treesitter.config')
+
+if not status_ok then
+  return
+end
+
 local enabled_list = {'vim', 'lua','javascript', 'javascriptreact', 'typescriptreact', 'typescript'}
+
 local parsers = require('nvim-treesitter.parsers')
-require'nvim-treesitter.configs'.setup({
+
+treeSitter.setup({
   ensure_installed = "maintained",
   ignore_install = { "haskel" },
+  sync_install = false,
   highlight = {
     enable = true,
-    disable = { "c", "rust"},
+    disable = {},
     additional_vim_regex_highlighting = false,
   },
   autotag = {
