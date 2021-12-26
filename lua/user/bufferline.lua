@@ -1,4 +1,10 @@
-require('bufferline').setup {
+local status_ok, buff = pcall(require, 'bufferline')
+
+if not status_ok then
+  return
+end
+
+buff.setup {
   options = {
     numbers = function(opts)
      return string.format('%s', opts.lower(opts.ordinal))
@@ -13,7 +19,7 @@ require('bufferline').setup {
     close_icon = '',
     left_trunc_marker = '',
     right_trunc_marker = '',
-    name_formatter = function(buf)  
+    name_formatter = function(buf)
       if buf.name:match('%.md') then
         return vim.fn.fnamemodify(buf.name, ':t:r')
       end
