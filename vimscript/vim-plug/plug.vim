@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'rafamadriz/friendly-snippets'
   Plug 'tpope/vim-commentary'
   Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 
   " cmp plugins
   Plug 'hrsh7th/nvim-cmp'
@@ -39,9 +40,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'liuchengxu/vim-which-key'
 
-
 " collaborator
   Plug 'kdheepak/lazygit.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
 
 " search - exps - navigator
   Plug 'nvim-telescope/telescope.nvim'
