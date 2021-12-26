@@ -24,9 +24,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
 let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
-let g:which_key_map['v'] = [ '<C-W>v'                     , 'split rightside']
+let g:which_key_map['H'] = [ '<C-W>s'                     , 'split horizontal']
+let g:which_key_map['V'] = [ '<C-W>v'                     , 'split vertical']
 let g:which_key_map['P'] = [ '<M-p>'                      , 'open telescope']
 
 " Register which key map

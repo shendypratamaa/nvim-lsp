@@ -60,7 +60,7 @@ nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
 nnoremap <M-p> :<c-u>:Telescope<cr>
 
 " remove search by blocking text or symbol
-nnoremap <C-c> :<c-u>:set hlsearch!<cr>
+nnoremap <M-w> :<c-u>set hlsearch!<cr>
 
 " keybind nvim trouble
 nnoremap <C-x> <cmd>TroubleToggle<cr>
