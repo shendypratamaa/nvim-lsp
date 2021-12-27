@@ -25,15 +25,6 @@ treeSitter.setup({
       'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr','menuitem'
     }
   },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    }
-  },
   rainbow = {
     enable = true,
     disable = vim.tbl_filter(
@@ -46,5 +37,11 @@ treeSitter.setup({
       end,
       parsers.available_parsers()
     )
-  }
+  },
+  indent = { 
+    disable = { 
+      "yaml", 
+      "yml" 
+    }
+  },
 })
