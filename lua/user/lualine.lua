@@ -1,4 +1,10 @@
-require('lualine').setup {
+local status_ok, lines = pcall(require, 'lualine')
+
+if not status_ok then
+  return
+end
+
+lines.setup {
   options = {
     icons_enabled = true,
     theme = 'palenight',
