@@ -25,8 +25,8 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 " Single mappings
 let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
-let g:which_key_map['H'] = [ '<C-W>s'                     , 'split horizontal']
-let g:which_key_map['V'] = [ '<C-W>v'                     , 'split vertical']
+let g:which_key_map['W'] = [ '<C-W>s'                     , 'split horizontal']
+let g:which_key_map['E'] = [ '<C-W>v'                     , 'split vertical']
 let g:which_key_map['P'] = [ '<M-p>'                      , 'open telescope']
 
 " Register which key map
