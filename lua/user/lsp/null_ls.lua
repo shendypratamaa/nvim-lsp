@@ -6,11 +6,30 @@ end
 
 local formatting = null_ls.builtins.formatting
 
-null_ls.setup {
-  debug = true,
+local actions = null_ls.builtins.code_actions
+
+null_ls.setup({
+  debug = false,
   sources = {
-    formatting.prettier.with({ extra_args = { "--no-semi", "--single-quotes", "--jsx-single-quotes", "--tsx-single-quotes" } }),
+    formatting.prettier.with({
+      filetype = {
+        'vim',
+        'lua',
+        'javascript',
+        'javascriptreact',
+        'typescriptreact',
+        'typescript',
+        'html',
+        'markdown',
+        'css',
+        'scss',
+        'json',
+        'yaml'
+      },
+      extra_args = {"--no-semi", "--jsx-single-quotes", "--tsx-single-quotes", "--single-quotes"}
+    }),
     formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.stylua,
+    formatting.ESLint,
+    actions.gitsigns
   }
-}
+})
