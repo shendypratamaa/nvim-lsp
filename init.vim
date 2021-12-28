@@ -32,7 +32,7 @@ luafile ~/.config/nvim/lua/user/cmp.lua
 
 " telescope file-exp
 luafile ~/.config/nvim/lua/user/telescope.lua
-luafile ~/.config/nvim/lua/user/null_ls.lua
+luafile ~/.config/nvim/lua/user/lsp/null_ls.lua
 luafile ~/.config/nvim/lua/user/gitsign.lua
 
 " themes and utils

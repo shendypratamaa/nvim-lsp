@@ -5,7 +5,7 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-  " migrate to nvim-lspconfig
+  " Nvim-lsp-config
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
 
