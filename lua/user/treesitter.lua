@@ -4,7 +4,7 @@ if not status_ok then
   return
 end
 
-local enabled_list = {'vim', 'lua','javascript', 'javascriptreact', 'typescriptreact', 'typescript'}
+local filetypes = {'vim', 'lua','javascript', 'javascriptreact', 'typescriptreact', 'typescript'}
 
 local parsers = require('nvim-treesitter.parsers')
 
@@ -19,7 +19,7 @@ treeSitter.setup({
   },
   autotag = {
     enable = true,
-    filetypes = {'html', 'javascript', 'javascriptreact', 'typescriptreact'},
+    filetypes = { filetypes },
     skip_tags = {
       'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'slot',
       'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr','menuitem'
@@ -30,7 +30,7 @@ treeSitter.setup({
     disable = vim.tbl_filter(
       function(p)
           local disable = true
-          for _, lang in pairs(enabled_list) do
+          for _, lang in pairs(filetypes) do
             if p==lang then disable = false end
           end
           return disable
@@ -42,6 +42,6 @@ treeSitter.setup({
     disable = { 
       "yaml", 
       "yml" 
-    }
+    },
   },
 })
