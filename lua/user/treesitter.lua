@@ -39,6 +39,7 @@ treeSitter.setup({
     )
   },
   indent = { 
+    enable = true,
     disable = { 
       "yaml", 
       "yml" 
