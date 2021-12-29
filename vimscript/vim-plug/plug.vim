@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'jiangmiao/auto-pairs'
 
   " cmp plugins
   Plug 'hrsh7th/nvim-cmp'
@@ -27,16 +28,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " utils - themes - extentions
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'p00f/nvim-ts-rainbow'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'akinsho/bufferline.nvim'
   Plug 'glepnir/dashboard-nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'christianchiarulli/nvcode-color-schemes.vim'
   Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'windwp/nvim-ts-autotag'
-  Plug 'jiangmiao/auto-pairs'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'liuchengxu/vim-which-key'
 
@@ -50,6 +50,5 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'simeji/winresizer'
-
 
 call plug#end()

@@ -1,6 +1,10 @@
 " set leader key
 let g:mapleader = "\<Space>"
 
+set termguicolors
+colorscheme dracula
+hi Normal guibg=NONE ctermbg=NONE
+
 syntax on
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line

@@ -1,6 +1,6 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+local status_ok, null_ls = pcall(require, "null-ls")
 
-if not null_ls_status_ok then
+if not status_ok then
 	return
 end
 
@@ -11,7 +11,6 @@ local actions = null_ls.builtins.code_actions
 local sources = {
 	formatting.eslint_d,
 	formatting.stylua,
-	formatting.stylelint,
 	formatting.prettier.with({
 		filetype = {
 			"javascript",
@@ -26,7 +25,6 @@ local sources = {
 		},
 		extra_args = { "--no-semi", "--single-quotes", "--jsx-single-quotes", "--tsx-single-quotes" },
 	}),
-	formatting.black.with({ extra_args = { "--fast" } }),
 	actions.gitsigns,
 }
 

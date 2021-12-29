@@ -13,7 +13,7 @@ source  ~/.config/nvim/vimscript/whichkey.vim
 
 let g:nvcode_termcolors=256
 
-colorscheme palenight
+colorscheme gruvbox
 
 if(has('termguicolors'))
   set termguicolors
