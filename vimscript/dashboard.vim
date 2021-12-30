@@ -11,6 +11,9 @@ let g:dashboard_custom_header = [
 \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
 \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
 \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\ '                                                       ',
+\ '                                                       ',
+\ '             github.com/shendypratamaa 👾              ',
 \]
 
-autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
+" autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
