@@ -11,9 +11,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'tami5/lspsaga.nvim'
 
-  " collaborator
+  " git helper
   Plug 'kdheepak/lazygit.nvim'
   Plug 'lewis6991/gitsigns.nvim'
+
+  " keys helper
+  Plug 'folke/which-key.nvim'
 
   " snippets
   Plug 'folke/trouble.nvim'
@@ -21,6 +24,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'rafamadriz/friendly-snippets'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'blackCauldron7/surround.nvim'
+  Plug 'nvim-lua/plenary.nvim'
 
   " cmp plugins
   Plug 'hrsh7th/nvim-cmp'
@@ -30,27 +35,26 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
 
-  " utils - themes - extentions
+  " treesitter 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
   Plug 'p00f/nvim-ts-rainbow'
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'akinsho/bufferline.nvim'
-  Plug 'glepnir/dashboard-nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'liuchengxu/vim-which-key'
-  Plug 'blackCauldron7/surround.nvim'
 
-" search - exps - navigator
+  " Telescope
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  Plug 'christoomey/vim-tmux-navigator'
+
+  " themes - utils 
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'glepnir/dashboard-nvim'
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'simeji/winresizer'
 
 call plug#end()
