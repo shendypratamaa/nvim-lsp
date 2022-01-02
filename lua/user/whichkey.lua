@@ -8,22 +8,22 @@ local wk = which_key
 
 local setup = {
 	plugins = {
-		marks = true, -- shows a list of your marks on ' and `
+		marks = false, -- shows a list of your marks on ' and `
 		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
 		spelling = {
-			enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+			enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
 			suggestions = 20, -- how many suggestions should be shown in the list?
 		},
 		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
 		-- No actual key bindings are created
 		presets = {
 			operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-			motions = true, -- adds help for motions
-			text_objects = true, -- help for text objects triggered after entering an operator
+			motions = false, -- adds help for motions
+			text_objects = false, -- help for text objects triggered after entering an operator
 			windows = true, -- default bindings on <c-w>
 			nav = true, -- misc bindings to work with windows
-			z = true, -- bindings for folds, spelling and others prefixed with z
-			g = true, -- bindings for prefixed with g
+			z = false, -- bindings for folds, spelling and others prefixed with z
+			g = false, -- bindings for prefixed with g
 		},
 	},
 	-- add operators that will trigger motion and text object completion
@@ -50,10 +50,10 @@ local setup = {
 		position = "bottom", -- bottom, top
 		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
 		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 0,
+		winblend = 5,
 	},
 	layout = {
-		height = { min = 4, max = 25 }, -- min and max height of the columns
+		height = { min = 3, max = 25 }, -- min and max height of the columns
 		width = { min = 20, max = 50 }, -- min and max width of the columns
 		spacing = 3, -- spacing between columns
 		align = "left", -- align columns left, center or right
@@ -82,13 +82,16 @@ local opts = {
 }
 
 local keybinds = {
-	s = { "<cmd>:w!<CR>", "Save files" },
-	q = { "<cmd>:wq!<CR>", "Quit Save" },
-	r = { "<cmd>noh<CR>", "Remove Result Search" },
-	n = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-	d = { "<cmd>:bdelete<CR>", "delete current buffer" },
+	s = { "<cmd>:w!<cr>", "Save files" },
+	q = { "<cmd>:wq!<cr>", "Quit Save" },
+	v = { "<C-w>s<cr>", "Split horizontal" },
+	V = { "<C-w>v<cr>", "Split vertical" },
+	r = { "<cmd>noh<cr>", "Remove Search" },
+	n = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	d = { "<cmd>:bdelete<cr>", "Delete buffer" },
+	R = { "<cmd>lua require'lspsaga.rename'.rename()<cr>", "Rename" },
 	f = {
-		"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>",
+		"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
 	},
 	L = {
@@ -100,6 +103,7 @@ local keybinds = {
 	G = {
 		name = "+Git",
 		g = { "<cmd>LazyGit<CR>", "Lazy git" },
+		G = { "<cmd>LazyGitConfig<cr>", "Lazy git config" },
 		j = { "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Next hunk" },
 		k = { "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Prev hunk" },
 		l = { "<cmd>lua require'gitsigns'.blame_line()<cr>", "Blame" },
@@ -119,7 +123,6 @@ local keybinds = {
 		b = { "<cmd>Telescope live_grep<cr>", "Live grep files" },
 		c = { "<cmd>Telescope buffers<cr>", "Buffer files" },
 		d = { "<cmd>Telescope help_tags<cr>", "Help files" },
-		e = { "<cmd>Telescope file_browser<cr>", "Browser files" },
 	},
 	X = {
 		name = "+Trouble",
@@ -127,9 +130,10 @@ local keybinds = {
 		b = { "<cmd>TroubleToggle quickfix<cr>", "Quick fix" },
 		c = { "<cmd>TroubleToggle loclist<cr>", "Loc list" },
 	},
-	S = {
-		b = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		c = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+	U = {
+		name = "+Utils",
+		j = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 	},
 }
 

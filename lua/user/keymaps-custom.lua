@@ -45,6 +45,7 @@ keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>", term_opts)
 keymap("n", "<C-j>", ":TmuxNavigateDown<CR>", term_opts)
 keymap("n", "<C-k>", ":TmuxNavigateUp<CR>", term_opts)
 keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", term_opts)
+
 vim.g.tmux_navigator_no_mappings = 1
 vim.g.tmux_navigator_save_on_switch = 2
 vim.g.tmux_navigator_disable_when_zoomed = 1
@@ -65,18 +66,9 @@ keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>", opts)
 
 -- telescope
 keymap("n", "<M-p>", ":Telescope<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>:Telescope find_files<CR>", opts)
-keymap("n", "<leader>fl", "<cmd>:Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fj", "<cmd>Telescope buffers<CR>", opts)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", opts)
-keymap("n", "<leader>ft", "<cmd>DashboardChangeColorscheme<CR>", opts)
 
 -- remove history seach text
 keymap("n", "<M-v>", ":noh<cr>", opts)
 
 -- nvim trouble keymap
 keymap("n", "<C-x>", "<cmd>TroubleToggle<CR>", opts)
-keymap("n", "xd", "<cmd>TroubleToggle document_diagnostics<CR>", opts)
-keymap("n", "xq", "<cmd>TroubleToggle quickfix<CR>", opts)
-keymap("n", "xl", "<cmd>TroubleToggle loclist<CR>", opts)

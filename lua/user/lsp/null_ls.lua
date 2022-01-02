@@ -6,7 +6,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 
-local actions = null_ls.builtins.code_actions
+local action = null_ls.builtins.code_actions
 
 local sources = {
 	formatting.eslint_d,
@@ -24,8 +24,8 @@ local sources = {
 			"markdown",
 		},
 		extra_args = { "--no-semi", "--single-quotes", "--jsx-single-quotes", "--tsx-single-quotes" },
+		action.gitsigns,
 	}),
-	actions.gitsigns,
 }
 
 null_ls.setup({
