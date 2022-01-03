@@ -1,11 +1,5 @@
 local status_ok, telescope = pcall(require, "telescope")
 
-local trouble_status, trouble = pcall(require, "trouble.provider.telescope")
-
-if not trouble_status then
-	return
-end
-
 if not status_ok then
 	return
 end
