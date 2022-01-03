@@ -14,6 +14,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
 
+  " need configure
+  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+  Plug 'ray-x/navigator.lua'
+
   " Git
   Plug 'kdheepak/lazygit.nvim'
 
@@ -42,6 +46,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'shendypratamaa/nvim-ts-rainbow'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'numToStr/Comment.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
   " Telescope
   Plug 'nvim-telescope/telescope.nvim'
