@@ -14,10 +14,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
 
-  " need configure
-  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
-  Plug 'ray-x/navigator.lua'
-
   " Git
   Plug 'kdheepak/lazygit.nvim'
 
@@ -55,6 +51,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Colorscheme
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'Mofiqul/dracula.nvim'
+  Plug 'bluz71/vim-nightfly-guicolors'
 
   " Themes - Utils
   Plug 'nvim-lualine/lualine.nvim'
