@@ -41,7 +41,6 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
 		vim.api.nvim_exec(
 			[[
@@ -62,8 +61,6 @@ local function lsp_keymaps(bufnr)
 	-- nvim-lsp binding
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 	-- lspsaga binding
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
@@ -86,34 +83,8 @@ local function lsp_keymaps(bufnr)
 		"<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR>",
 		opts
 	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gl",
-		"<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>cd",
-		"<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"[e",
-		"<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"]e",
-		"<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
-		opts
-	)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
