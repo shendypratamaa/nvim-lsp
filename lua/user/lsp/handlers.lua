@@ -72,6 +72,13 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
+		"gl",
+		"<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
+		opts
+	)
+	vim.api.nvim_buf_set_keymap(
+		bufnr,
+		"n",
 		"<C-f>",
 		"<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(1)<CR>",
 		opts
