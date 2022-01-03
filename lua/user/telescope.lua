@@ -34,7 +34,6 @@ telescope.setup({
 			"--column",
 			"--smart-case",
 			"--trim",
-			"--hidden",
 		},
 		mappings = {
 			i = {
@@ -66,15 +65,13 @@ telescope.setup({
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key,
-				["<C-j"] = trouble.open_with_trouble,
 			},
 			n = {
-				["<esc>"] = actions.close,
+				["<C-c>"] = actions.close,
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
-				["<C-c>"] = actions.close,
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
@@ -96,7 +93,6 @@ telescope.setup({
 
 				["<PageUp>"] = actions.results_scrolling_up,
 				["<PageDown>"] = actions.results_scrolling_down,
-				["<c-j>"] = trouble.open_with_trouble,
 
 				["?"] = actions.which_key,
 			},
