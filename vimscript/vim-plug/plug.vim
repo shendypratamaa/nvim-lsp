@@ -64,4 +64,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'simeji/winresizer'
 
+  "notes-takingapp
+  Plug 'vimwiki/vimwiki'
+
 call plug#end()
