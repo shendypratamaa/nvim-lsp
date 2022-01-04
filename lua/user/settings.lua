@@ -1,6 +1,6 @@
 local options = {
 	syntax = "on",
-	filetype = "on",
+	filetype = "plugin_on",
 	fileencoding = "utf8",
 	hidden = true,
 	number = true,
@@ -53,7 +53,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  let g:vimwiki_list = [{ 'path' : '~/code/vimwiki', 'syntax' : 'markdown', 'ext' : '.md' }]
+  let g:vimwiki_list = [{ 'path' : '~/Documents/.vimwiki', 'syntax' : 'markdown', 'ext' : '.md' }]
 ]])
 
 -- vim.cmd([[ set filetype=plugin indent on ]])

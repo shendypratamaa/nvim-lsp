@@ -3,7 +3,6 @@ local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
 	return
 end
-
 local wk = which_key
 
 local setup = {
@@ -82,58 +81,66 @@ local opts = {
 }
 
 local keybinds = {
-	s = { "<cmd>:w!<cr>", "Save files" },
+	s = { "<cmd>:w!<cr>", "Save Files" },
 	q = { "<cmd>:wq!<cr>", "Quit Save" },
-	v = { "<C-w>s<cr>", "Split horizontal" },
-	V = { "<C-w>v<cr>", "Split vertical" },
+	v = { "<C-w>s<cr>", "Split Horizontal" },
+	V = { "<C-w>v<cr>", "Split Vertical" },
 	r = { "<cmd>noh<cr>", "Remove Search" },
 	n = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	D = { "<cmd>:bdelete<cr>", "Delete buffer" },
+	D = { "<cmd>:bdelete<cr>", "Delete Buffer" },
 	R = { "<cmd>lua require'lspsaga.rename'.rename()<cr>", "Rename" },
 	f = {
 		"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-		"Find files",
+		"Find Files",
 	},
 	L = {
 		name = "+LSP",
-		h = { "<cmd>LspInfo<cr>", "Lsp information" },
-		j = { "<cmd>LspInstallInfo<cr>", "Lsp installer info" },
-		n = { "<cmd>NullLsLog<cr>", "Null ls log" },
+		h = { "<cmd>LspInfo<cr>", "Lsp Information" },
+		j = { "<cmd>LspInstallInfo<cr>", "Lsp Installer Info" },
+		n = { "<cmd>NullLsLog<cr>", "Null Ls Log" },
 	},
 	G = {
-		name = "+Git",
+		name = "+GIT",
 		g = { "<cmd>LazyGit<CR>", "Lazy git" },
-		G = { "<cmd>LazyGitConfig<cr>", "Lazy git config" },
-		j = { "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Next hunk" },
-		k = { "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Prev hunk" },
+		G = { "<cmd>LazyGitConfig<cr>", "Lazy Git Config" },
+		j = { "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+		k = { "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require'gitsigns'.blame_line()<cr>", "Blame" },
-		p = { "<cmd>lua require'gitsigns'.preview_hunk()<cr>", "Preview hunk" },
-		r = { "<cmd>lua require'gitsigns'.reset_hunk()<cr>", "Reset hunk" },
-		R = { "<cmd>lua require'gitsigns'.reset_buffer()<cr>", "Reset buffer" },
-		s = { "<cmd>lua require'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
-		u = { "<cmd>lua require'gitsings'.undo_stage_hunk()<cr>", "Undo stage hunk" },
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		p = { "<cmd>lua require'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+		r = { "<cmd>lua require'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+		R = { "<cmd>lua require'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		s = { "<cmd>lua require'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		u = { "<cmd>lua require'gitsings'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+		o = { "<cmd>Telescope git_status<cr>", "Open Change File" },
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 	},
 	P = {
-		name = "+Telescope",
-		a = { "<cmd>Telescope find_files<cr>", "Find files" },
-		b = { "<cmd>Telescope live_grep<cr>", "Live grep files" },
-		c = { "<cmd>Telescope buffers<cr>", "Buffer files" },
-		d = { "<cmd>Telescope help_tags<cr>", "Help files" },
+		name = "+TELESCOPE",
+		a = { "<cmd>Telescope find_files<cr>", "Find Files" },
+		b = { "<cmd>Telescope live_grep<cr>", "Live Grep Files" },
+		c = { "<cmd>Telescope buffers<cr>", "Buffer Files" },
+		d = { "<cmd>Telescope help_tags<cr>", "Help Files" },
 	},
 	X = {
-		name = "+Trouble",
+		name = "+TROUBLE",
 		a = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
-		b = { "<cmd>TroubleToggle quickfix<cr>", "Quick fix" },
-		c = { "<cmd>TroubleToggle loclist<cr>", "Loc list" },
+		b = { "<cmd>TroubleToggle quickfix<cr>", "Quick Fix" },
+		c = { "<cmd>TroubleToggle loclist<cr>", "Loc List" },
 	},
 	U = {
-		name = "+Utils",
+		name = "+UTILS",
 		j = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+	},
+	W = {
+		name = "+WIKI",
+		w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
+		t = { "<cmd>VimwikiTabIndex<cr>", "Wiki Tab Index" },
+		s = { "<cmd>VimwikiUISelect<cr>", "Wiki Selected" },
+		d = { "<cmd>VimwikiDiaryIndex<cr>", "Wiki Diary Index" },
+		n = { "<cmd>VimwikiMakeDiaryNote<cr>", "Wiki Diary Note" },
 	},
 }
 
