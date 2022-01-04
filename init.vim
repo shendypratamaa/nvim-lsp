@@ -9,7 +9,6 @@ luafile ~/.config/nvim/lua/user/lualine.lua
 luafile ~/.config/nvim/lua/user/indentblankline.lua
 luafile ~/.config/nvim/lua/user/colorizer.lua
 luafile ~/.config/nvim/lua/user/bufferline.lua
-luafile ~/.config/nvim/lua/user/surround.lua
 luafile ~/.config/nvim/lua/user/nvimtree.lua
 
 " keymaps
@@ -18,7 +17,6 @@ luafile ~/.config/nvim/lua/user/whichkey.lua
 
 " nvim-lsp
 luafile ~/.config/nvim/lua/user/lsp/init.lua
-luafile ~/.config/nvim/lua/user/lsp/null_ls.lua
 luafile ~/.config/nvim/lua/user/lspsaga.lua
 luafile ~/.config/nvim/lua/user/trouble.lua
 luafile ~/.config/nvim/lua/user/gitsigns.lua

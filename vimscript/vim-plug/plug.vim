@@ -24,8 +24,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'L3MON4D3/LuaSnip'
   Plug 'rafamadriz/friendly-snippets'
   Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'blackCauldron7/surround.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'tpope/vim-surround'
 
   " Cmp completion
   Plug 'hrsh7th/nvim-cmp'
