@@ -1,9 +1,10 @@
 local options = {
 	syntax = "on",
-	filetype = "plugin_on",
+	filetype = "plugin_indent_on",
 	fileencoding = "utf8",
 	hidden = true,
 	number = true,
+	virtualedit = "block",
 	relativenumber = true,
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -22,10 +23,10 @@ local options = {
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
 	termguicolors = true, -- set term gui colors (most terminals support this)
-	timeoutlen = 400, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
-	updatetime = 400, -- faster completion (4000ms default)
-	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+	updatetime = 300, -- faster completion (4000ms default)
+	writebackup = false, -- written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	tabstop = 2, -- insert 2 spaces for a tab
@@ -34,6 +35,7 @@ local options = {
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
+	colorcolumn = "120",
 	sidescrolloff = 8,
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
 }
@@ -53,10 +55,18 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  let g:vimwiki_list = [{ 'path' : '~/Documents/.vimwiki', 'syntax' : 'markdown', 'ext' : '.md' }]
+  fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+  endfun
+
+  augroup neovim_rocks
+    autocmd!
+    autocmd BufWritePre * :call TrimWhitespace()
+  augroup END
 ]])
 
--- vim.cmd([[ set filetype=plugin indent on ]])
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]])
