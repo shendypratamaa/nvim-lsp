@@ -8,7 +8,7 @@ local wk = which_key
 local setup = {
 	plugins = {
 		marks = false, -- shows a list of your marks on ' and `
-		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+		registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
 		spelling = {
 			enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
 			suggestions = 20, -- how many suggestions should be shown in the list?
@@ -20,7 +20,7 @@ local setup = {
 			motions = false, -- adds help for motions
 			text_objects = false, -- help for text objects triggered after entering an operator
 			windows = true, -- default bindings on <c-w>
-			nav = true, -- misc bindings to work with windows
+			nav = false, -- misc bindings to work with windows
 			z = false, -- bindings for folds, spelling and others prefixed with z
 			g = false, -- bindings for prefixed with g
 		},
@@ -94,13 +94,13 @@ local keybinds = {
 		"Find Files",
 	},
 	L = {
-		name = "+LSP",
+		name = "+LSP 🤖",
 		h = { "<cmd>LspInfo<cr>", "Lsp Information" },
 		j = { "<cmd>LspInstallInfo<cr>", "Lsp Installer Info" },
 		n = { "<cmd>NullLsLog<cr>", "Null Ls Log" },
 	},
 	G = {
-		name = "+GIT",
+		name = "+GIT 🚀",
 		g = { "<cmd>LazyGit<CR>", "Lazy git" },
 		G = { "<cmd>LazyGitConfig<cr>", "Lazy Git Config" },
 		j = { "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -117,30 +117,31 @@ local keybinds = {
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 	},
 	P = {
-		name = "+TELESCOPE",
+		name = "+TELESCOPE 🔭",
 		a = { "<cmd>Telescope find_files<cr>", "Find Files" },
 		b = { "<cmd>Telescope live_grep<cr>", "Live Grep Files" },
 		c = { "<cmd>Telescope buffers<cr>", "Buffer Files" },
 		d = { "<cmd>Telescope help_tags<cr>", "Help Files" },
 	},
 	X = {
-		name = "+TROUBLE",
+		name = "+TROUBLE 🚑",
 		a = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
 		b = { "<cmd>TroubleToggle quickfix<cr>", "Quick Fix" },
 		c = { "<cmd>TroubleToggle loclist<cr>", "Loc List" },
 	},
 	U = {
-		name = "+UTILS",
+		name = "+UTILS 👽",
 		j = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 	},
 	W = {
-		name = "+WIKI",
-		w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
-		t = { "<cmd>VimwikiTabIndex<cr>", "Wiki Tab Index" },
-		s = { "<cmd>VimwikiUISelect<cr>", "Wiki Selected" },
-		d = { "<cmd>VimwikiDiaryIndex<cr>", "Wiki Diary Index" },
-		n = { "<cmd>VimwikiMakeDiaryNote<cr>", "Wiki Diary Note" },
+		name = "+WIKI 🧛",
+		w = { "<cmd>VimwikiIndex<cr>", "Open Wiki Index L-w-w" },
+		W = { "<cmd>VimwikiDiaryIndex<cr>", "Diary Index L-w-L-i" },
+		n = { "<cmd>VimwikiMakeDiaryNote<cr>", "Diary Today L-w-L-t" },
+		m = { "<cmd>VimwikiMakeTomorrowDiaryNote<cr>", "Diary Tommorow (+1) L-w-L-m" },
+		M = { "<cmd>VimwikiMakeYesterdayDiaryNote<cr>", "Diary Yesterday (-1) L-w-L-y" },
+		s = { "<cmd>VimwikiUISelect<cr>", "Wiki Selected L-w-s" },
 	},
 }
 
