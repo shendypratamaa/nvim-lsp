@@ -11,7 +11,7 @@ npairs.setup({
 		javascript = { "string", "template_string" },
 		java = false,
 	},
-	disable_filetype = { "TelescopePrompt", "spectre_panel", "guihua", "guihua_rust", "clap_input" },
+	disable_filetype = { "TelescopePrompt", "spectre_panel" },
 	fast_wrap = {
 		map = "<M-e>",
 		chars = { "{", "[", "(", '"', "'" },

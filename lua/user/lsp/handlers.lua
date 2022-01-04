@@ -64,10 +64,10 @@ local function lsp_keymaps(bufnr)
 
 	-- lspsaga binding
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "ga", "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "x", "ga", "<cmd>lua require'lspsaga.codeaction'.range_code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gt", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "x", "gs", "<cmd>lua require'lspsaga.codeaction'.range_code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "g.", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gk", "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua require'lspsaga.hover'.render_hover_doc()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
