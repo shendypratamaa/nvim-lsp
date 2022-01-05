@@ -12,15 +12,18 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
-	symbols = { error = " ", warn = " " },
-	colored = false,
+	symbols = {
+		error = " ",
+		warn = " ",
+	},
+	colored = true,
 	update_in_insert = false,
 	always_visible = true,
 }
 
 local diff = {
 	"diff",
-	colored = false,
+	colored = true,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 	cond = hide_in_width,
 }
@@ -34,7 +37,7 @@ local mode = {
 
 local filetype = {
 	"filetype",
-	icons_enabled = false,
+	icons_enabled = true,
 	icon = nil,
 }
 
@@ -62,19 +65,31 @@ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+local filePath = {
+	"filename",
+	file_status = true,
+	path = 1,
+
+	symbols = {
+		modified = "[+]", -- Text to show when the file is modified.
+		readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+		unnamed = "[No Name]", -- Text to show for unnamed buffers.
+	},
+}
+
 lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "nightfly", -- available : dracula-nvim, tokyonight, nightfly
-		component_separators = { left = "", right = "" },
+		component_separators = { left = "  ", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "toggleterm" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree" },
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
-		lualine_c = {},
+		lualine_a = { mode },
+		lualine_b = { branch, filePath },
+		lualine_c = { diagnostics },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
