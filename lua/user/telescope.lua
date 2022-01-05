@@ -17,7 +17,7 @@ telescope.setup({
 	},
 	defaults = {
 		prompt_prefix = " ",
-		selection_caret = " ",
+		selection_caret = "  ",
 		path_display = { "smart" },
 		vimgrep_arguments = {
 			"rg",

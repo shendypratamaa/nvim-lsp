@@ -25,7 +25,7 @@ keymap("n", "<C-q>", ":wq!<CR>", opts)
 keymap("n", "<C-c>", "<ESC>", opts)
 
 -- delete buffer
-keymap("n", "Dd", "<c-u>:bdelete<CR>", term_opts)
+keymap("n", "D", "<c-u>:bdelete<CR>", term_opts)
 
 -- window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
