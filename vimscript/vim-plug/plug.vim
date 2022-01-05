@@ -63,6 +63,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'goolord/alpha-nvim'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'simeji/winresizer'
+  Plug 'mbbill/undotree'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
