@@ -44,7 +44,7 @@ dashboard.section.buttons.val = {
 	button("e", "📖 ➡️ New Files", ":ene <BAR> startinsert <cr>"),
 	button("r", "🔖 ➡️ Recently Files", ":Telescope oldfiles <cr>"),
 	button("t", "🔭 ➡️ Find Text", ":Telescope live_grep <cr>"),
-	button("w", "🧛 ➡️ Open Vim Wiki", ":e ~/Documents/.vimwiki/diary/diary.md<cr>"),
+	button("w", "🧛 ➡️ Open Vim Wiki", ":e ~/Documents/.vimwiki/index.md<cr>"),
 	button("n", "🤖 ➡️ Configuration Neovim", ":e ~/.config/nvim/init.vim<cr>"),
 	button("a", "🌈 ➡️ Configuration Alacritty", ":e ~/.config/alacritty/alacritty.yml<cr>"),
 	button("z", "🪐 ➡️ Configuration Zshell", ":e ~/.zshrc<cr>"),
