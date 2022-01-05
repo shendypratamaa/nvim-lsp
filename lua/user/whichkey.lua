@@ -81,13 +81,13 @@ local opts = {
 }
 
 local keybinds = {
+	D = { "<cmd>:bdelete<cr>", "Delete Buffer" },
 	s = { "<cmd>:w!<cr>", "Save Files" },
 	q = { "<cmd>:wq!<cr>", "Quit Save" },
 	v = { "<C-w>s<cr>", "Split Horizontal" },
 	V = { "<C-w>v<cr>", "Split Vertical" },
 	r = { "<cmd>noh<cr>", "Remove Search" },
 	n = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	D = { "<cmd>:bdelete<cr>", "Delete Buffer" },
 	R = { "<cmd>lua require'lspsaga.rename'.rename()<cr>", "Rename" },
 	f = {
 		"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
