@@ -62,7 +62,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'goolord/alpha-nvim'
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'simeji/winresizer'
   Plug 'mbbill/undotree'
 
   "notes-takingapp
