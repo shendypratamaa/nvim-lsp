@@ -1,0 +1,160 @@
+env:
+  TERM: xterm-256color
+
+transparent_background_colors: true
+background_opacity: .95
+
+# TokyoNight Alacritty Colors
+# colors:
+#   # Default colors
+#   primary:
+#     background: "0x24283b"
+#     foreground: "0xc0caf5"
+#
+#   # Normal colors
+#   normal:
+#     black: "0x1D202F"
+#     red: "0xf7768e"
+#     green: "0x9ece6a"
+#     yellow: "0xe0af68"
+#     blue: "0x7aa2f7"
+#     magenta: "0xbb9af7"
+#     cyan: "0x7dcfff"
+#     white: "0xa9b1d6"
+#
+#   # Bright colors
+#   bright:
+#     black: "0x414868"
+#     red: "0xf7768e"
+#     green: "0x9ece6a"
+#     yellow: "0xe0af68"
+#     blue: "0x7aa2f7"
+#     magenta: "0xbb9af7"
+#     cyan: "0x7dcfff"
+#     white: "0xc0caf5"
+#
+#   indexed_colors:
+#     - { index: 16, color: "0xff9e64" }
+#     - { index: 17, color: "0xdb4b4b" }
+
+# NIGHTFLY
+draw_bold_text_with_bright_colors: true
+colors:
+  # Default colors
+  primary:
+    background: "#011627"
+    foreground: "#acb4c2"
+    bright_foreground: "#eeeeee"
+
+  # Cursor colors
+  cursor:
+    text: "#080808"
+    cursor: "#9ca1aa"
+
+  # Selection colors
+  selection:
+    text: "#080808"
+    background: "#b2ceee"
+
+  # Normal colors
+  normal:
+    black: "#1d3b53"
+    red: "#fc514e"
+    green: "#a1cd5e"
+    yellow: "#e3d18a"
+    blue: "#82aaff"
+    magenta: "#c792ea"
+    cyan: "#7fdbca"
+    white: "#a1aab8"
+
+  # Bright colors
+  bright:
+    black: "#7c8f8f"
+    red: "#ff5874"
+    green: "#21c7a8"
+    yellow: "#ecc48d"
+    blue: "#82aaff"
+    magenta: "#ae81ff"
+    cyan: "#7fdbca"
+    white: "#d6deeb"
+
+font:
+  normal:
+    family: FiraCode Nerd Font
+    style: Regular
+  bold:
+    family: FiraCode Nerd Font
+    style: Bold
+  italic:
+    family: Hack
+    style: Italic
+  bold_italic:
+    family: FiraCode Nerd Font
+    style: Bold
+    use_thin_stroke: true
+
+  size: 14.0
+  # size: 11.0
+  ligatures: true
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+window:
+  dynamic_title: false
+  decorations: Buttonless
+  padding:
+    x: 15
+    y: 15
+  dimensions:
+    columns: 200
+    lines: 55
+    alt_send_esc: true
+
+scrolling:
+  history: 10000
+  multiplier: 1
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+live_config_reload: true
+
+working_directory: None
+key_bindings:
+  # fix alacritty cant recognize options key / alt key as a meta key
+  # - { key: W, mods: Alt, chars: "\x1bw" }
+  # - { key: E, mods: Alt, chars: "\x1be" }
+  # - { key: P, mods: Alt, chars: "\x1bp" }
+  # - { key: B, mods: Alt, chars: "\x1bb" }
+  # - { key: N, mods: Alt, chars: "\x1bn" }
+  #
+  # Neovim key recognize
+  #   - { key: E, mods: Alt, chars: "\x1be" } example
+  - { key: T, mods: Alt, chars: "\x1bt" }
+  - { key: P, mods: Alt, chars: "\x1bp" }
+  - { key: V, mods: Alt, chars: "\x1bv" }
+
+  - { key: Tab, mods: Shift, chars: "^[[Z" }
+  - { key: Tab, mods: Shift, chars: "\x1b\x5b\x5a" }
+  - { key: Tab, mods: Shift, chars: "\x5e\x5b\x5b\x5a" }
+
+  - { key: P, mods: Control, action: Paste }
+  - { key: Insert, mods: Shift, action: Paste }
+  - { key: Slash, mods: Control, chars: "gc" }
+  - { key: Y, mods: Control, action: Copy }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Plus, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: Space, mods: Control, action: ToggleViMode }
+  - { key: Space, mods: Control, mode: Vi, action: ScrollToBottom }
+
+  - { key: Y, mods: Control, mode: Vi, action: ScrollLineUp }
+  - { key: E, mods: Control, mode: Vi, action: ScrollLineDown }
