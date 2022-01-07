@@ -10,8 +10,13 @@ luafile ~/.config/nvim/lua/user/indentblankline.lua
 luafile ~/.config/nvim/lua/user/colorizer.lua
 luafile ~/.config/nvim/lua/user/bufferline.lua
 luafile ~/.config/nvim/lua/user/nvimtree.lua
-luafile ~/.config/nvim/lua/user/vimwiki.lua
 luafile ~/.config/nvim/lua/user/undotree.lua
+luafile ~/.config/nvim/lua/user/neoscroll.lua
+luafile ~/.config/nvim/lua/user/notify.lua
+
+" markdown
+luafile ~/.config/nvim/lua/user/vimwiki.lua
+luafile ~/.config/nvim/lua/user/instant-markdown.lua
 
 " keymaps
 luafile ~/.config/nvim/lua/user/keymaps-custom.lua
