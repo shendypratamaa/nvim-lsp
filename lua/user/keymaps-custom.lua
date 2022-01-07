@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
-
 local keymap = vim.api.nvim_set_keymap
 
 keymap("", "<space>", "<Nop>", opts)
@@ -81,3 +80,7 @@ keymap("n", "<C-x>", "<cmd>TroubleToggle<CR>", opts)
 
 -- undotree
 keymap("n", "<M-t>", ":UndotreeToggle<CR>", opts)
+
+-- instant markdown preview
+keymap("n", "<M-o>", ":InstantMarkdownPreview<cr>", opts)
+keymap("n", "<M-i>", ":InstantMarkdownStop<cr>", opts)
