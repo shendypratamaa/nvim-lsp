@@ -39,6 +39,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
+
   Plug 'shendypratamaa/nvim-ts-rainbow'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'numToStr/Comment.nvim'
@@ -63,8 +64,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'goolord/alpha-nvim'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'mbbill/undotree'
+  Plug 'karb94/neoscroll.nvim'
+  Plug 'rcarriga/nvim-notify'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
+  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 call plug#end()
