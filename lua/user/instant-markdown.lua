@@ -1,0 +1,11 @@
+-- vim.g.instant_markdown_slow = 1
+vim.g.instant_markdown_autostart = 0 -- dont let running when first access files
+vim.g.instant_markdown_open_to_the_world = 1 -- for making local networking can acess
+vim.g.instant_markdown_allow_unsafe_content = 1
+vim.g.instant_markdown_allow_external_content = 1
+vim.g.instart_markdown_logfile = "~/.vim/instant_markdown.log"
+-- vim.g.instant_markdown_browser = "--new-window"
+-- vim.g.instant_markdown_port = 8090
+vim.g.instant_markdown_mermaid = 1
+vim.g.instant_markdown_mathjax = 1
+vim.g.instant_markdown_autoscroll = 1
