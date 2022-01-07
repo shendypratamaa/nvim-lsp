@@ -14,6 +14,7 @@ local enabled_list = {
 	"typescript",
 	"javascriptreact",
 	"typescriptreact",
+	"markdown",
 }
 
 treesitter.setup({

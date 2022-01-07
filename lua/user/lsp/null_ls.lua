@@ -13,6 +13,8 @@ local sources = {
 	formatting.stylua,
 	formatting.prettier.with({
 		filetype = {
+			"vim",
+			"lua",
 			"javascript",
 			"javascriptreact",
 			"typescript",
