@@ -11,11 +11,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'tami5/lspsaga.nvim'
   Plug 'folke/trouble.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
 
   " Git
   Plug 'kdheepak/lazygit.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
 
   " Keys
   Plug 'folke/which-key.nvim'
@@ -66,6 +66,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'mbbill/undotree'
   Plug 'karb94/neoscroll.nvim'
   Plug 'rcarriga/nvim-notify'
+  Plug 'moll/vim-bbye'
+  Plug 'akinsho/toggleterm.nvim'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
