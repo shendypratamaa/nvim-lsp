@@ -1,3 +1,24 @@
+vim.g.nvim_tree_icons = {
+	default = "",
+	symlink = "",
+	git = {
+		unstaged = "",
+		staged = "S",
+		unmerged = "",
+		renamed = "➜",
+		deleted = "",
+		untracked = "U",
+		ignored = "◌",
+	},
+	folder = {
+		default = "",
+		open = "",
+		empty = "",
+		empty_open = "",
+		symlink = "",
+	},
+}
+
 local status_ok, nvimtree = pcall(require, "nvim-tree")
 
 local config_ok, nvimtreeconfig = pcall(require, "nvim-tree.config")
@@ -47,6 +68,7 @@ nvimtree.setup({
 	git = {
 		enable = true,
 		ignore = false,
+		timeout = 500,
 	},
 	view = {
 		width = 30,
@@ -74,4 +96,12 @@ nvimtree.setup({
 		require_confirm = true,
 	},
 	quit_on_open = 0,
+	disable_window_picker = 0,
+	root_folder_modifier = ":t",
+	show_icons = {
+		git = 1,
+		folder = 1,
+		files = 1,
+		folder_arrows = 1,
+	},
 })
