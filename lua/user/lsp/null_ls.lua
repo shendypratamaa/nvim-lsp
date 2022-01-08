@@ -8,8 +8,13 @@ local formatting = null_ls.builtins.formatting
 
 local action = null_ls.builtins.code_actions
 
+local diagnostics = null_ls.builtins.diagnostics
+
 local sources = {
 	formatting.eslint_d,
+	diagnostics.eslint_d.with({
+		extra_args = { "--config-path", vim.fn.expand("/usr/local/lib/node_modules/eslint_d/bin/") },
+	}),
 	formatting.stylua,
 	formatting.prettier.with({
 		filetype = {
@@ -26,8 +31,8 @@ local sources = {
 			"markdown",
 		},
 		extra_args = { "--no-semi", "--single-quotes", "--jsx-single-quotes", "--tsx-single-quotes" },
-		action.gitsigns,
 	}),
+	action.gitsigns,
 }
 
 null_ls.setup({
