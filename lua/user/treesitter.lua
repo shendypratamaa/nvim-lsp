@@ -46,8 +46,8 @@ treesitter.setup({
 		keymaps = {
 			init_selection = "gnn",
 			node_incremental = "gmm",
-			scope_incremental = "<TAB>",
-			node_decremental = "<S-TAB>",
+			scope_incremental = "gaa",
+			node_decremental = "grr",
 		},
 	},
 	rainbow = {
