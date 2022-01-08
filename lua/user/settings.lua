@@ -23,7 +23,7 @@ local options = {
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
 	termguicolors = true, -- set term gui colors (most terminals support this)
-	timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
 	updatetime = 300, -- faster completion (4000ms default)
 	writebackup = false, -- written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
@@ -66,7 +66,15 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.cmd([[
+  augroup filetypedetect
+    au! BufRead,BufNewFile */vimwiki/*		set filetype=vimwiki
+  augroup END
+]])
+
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]])
 vim.cmd([[set nocompatible ]])
+-- remove folding unused space ~
+vim.cmd([[set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]])
