@@ -12,7 +12,6 @@ luafile ~/.config/nvim/lua/user/bufferline.lua
 luafile ~/.config/nvim/lua/user/nvimtree.lua
 luafile ~/.config/nvim/lua/user/undotree.lua
 luafile ~/.config/nvim/lua/user/neoscroll.lua
-luafile ~/.config/nvim/lua/user/notify.lua
 luafile ~/.config/nvim/lua/user/toggleterm.lua
 
 " markdown

@@ -65,7 +65,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'mbbill/undotree'
   Plug 'karb94/neoscroll.nvim'
-  Plug 'rcarriga/nvim-notify'
   Plug 'moll/vim-bbye'
   Plug 'akinsho/toggleterm.nvim'
 
