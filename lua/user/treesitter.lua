@@ -29,11 +29,17 @@ treesitter.setup({
 		"markdown",
 		"json",
 	},
-	ignore_install = { "haskel" },
+	ignore_install = {},
+	autopairs = {
+		enable = true,
+	},
+	autotag = {
+		enable = true,
+	},
 	highlight = {
 		enable = true,
 		disable = {},
-		additional_vim_regex_highlighting = false,
+		additional_vim_regex_highlighting = true,
 	},
 	incremental_selection = {
 		enable = true,
@@ -119,7 +125,7 @@ treesitter.setup({
 			},
 			lsp_interop = {
 				enable = true,
-				border = "none",
+				border = "rounded",
 				peek_definition_code = {
 					["<C-w>j"] = "@function.outer",
 					["<C-w>k"] = "@class.outer",
@@ -130,12 +136,6 @@ treesitter.setup({
 			enable = true,
 			enable_autocmd = false,
 		},
-		autopairs = {
-			enable = true,
-		},
-		autotag = {
-			enable = true,
-		},
-		indent = { enable = true, disable = { "yaml", "yml" } },
+		indent = { enable = true, disable = { "yaml" } },
 	},
 })
