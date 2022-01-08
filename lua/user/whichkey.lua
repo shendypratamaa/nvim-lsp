@@ -81,7 +81,7 @@ local opts = {
 }
 
 local keybinds = {
-	D = { "<cmd>:bdelete<cr>", "Delete Buffer" },
+	D = { "<cmd>:Bdelete<cr>", "Delete Buffer" },
 	s = { "<cmd>:w!<cr>", "Save Files" },
 	q = { "<cmd>:wq!<cr>", "Quit Save" },
 	v = { "<C-w>s<cr>", "Split Horizontal" },

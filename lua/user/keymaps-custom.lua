@@ -17,6 +17,7 @@ vim.g.maplocalleader = " "
 
 -- insert mode using JK
 keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jj", "<ESC>", opts)
 
 -- basic - save - quit
 keymap("n", "<C-s>", ":w<CR>", opts)
@@ -24,7 +25,10 @@ keymap("n", "<C-q>", ":wq!<CR>", opts)
 keymap("n", "<C-c>", "<ESC>", opts)
 
 -- delete buffer
-keymap("n", "wq", "<c-u>:bdelete<CR>", term_opts)
+keymap("n", "wq", ":Bdelete<cr>", opts)
+
+-- toggle_term
+keymap("n", "<C-]>", ":ToggleTerm direction=horizontal size=10<cr>", opts)
 
 -- window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
