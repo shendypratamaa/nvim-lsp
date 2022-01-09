@@ -36,7 +36,7 @@ buff.setup({
 		max_name_length = 15,
 		max_prefix_length = 15,
 		tab_size = 15,
-		diagnostics = "nvim_lsp",
+		diagnostics = "",
 		diagnostics_update_in_insert = true,
 		-- diagnostics_indicator = function(count, level, diagnostics_dict, context)
 		-- 	return "(" .. count .. ")"
