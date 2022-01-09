@@ -24,7 +24,6 @@ luafile ~/.config/nvim/lua/user/whichkey.lua
 
 " nvim-lsp
 luafile ~/.config/nvim/lua/user/lsp/init.lua
-luafile ~/.config/nvim/lua/user/lspsaga.lua
 luafile ~/.config/nvim/lua/user/trouble.lua
 luafile ~/.config/nvim/lua/user/gitsigns.lua
 

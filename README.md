@@ -6,7 +6,7 @@
   Feel free to edit all configuration, based on this configuration 🧛,
 
 * Repo include
-  * Noevim ready to go 🐥,
+  * Noevim configuration ready to go 🐥,
   * Tmux config inside extras folder,
   * Alacritty config inside extras folder
 
