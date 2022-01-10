@@ -1,6 +1,6 @@
 local options = {
 	syntax = "on",
-	filetype = "plugin_indent_on",
+	filetype = "plugin_on",
 	fileencoding = "utf8",
 	hidden = true,
 	number = true,
