@@ -20,7 +20,9 @@ local sources = {
 			"--tsx-single-quote",
 		},
 	}),
-	diagnostics.eslint,
+	-- formatting.stylelint,
+	diagnostics.stylelint,
+	diagnostics.eslint_d,
 	action.gitsigns,
 }
 
