@@ -13,7 +13,7 @@ npairs.setup({
 	},
 	disable_filetype = { "TelescopePrompt" },
 	fast_wrap = {
-		map = "<S-e>",
+		map = "<S-p>",
 		chars = { "{", "[", "(", '"', "'" },
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 		offset = 0,
