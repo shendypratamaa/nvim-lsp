@@ -1,6 +1,6 @@
 # Neovim-lspconfig 🐣
-*This is repo migration from nvimscript* 🛸
-*notes : moving native support, from coc-nvim to native lsp* 🚀
+*This is repo migration from neovim vim-script* 🛸
+*notes : moving native support, from coc-nvim to native lsp neovim* 🚀
 ## Whatever you want to call this 🌈
 > Feel free to clone this 📦<br>
   Feel free to edit all configuration, based on this configuration 🧛,
@@ -43,9 +43,9 @@
   <img src="/sources/9.png"/>
 </p>
 
-* Easy split multiple panes, vertical or horizontal, and easy to arrangement every panes 👯
+* Easy split multiple pane, vertical or horizontal, and easy to arrangement every panes 👯
 * Colorfull indentline [Indentline](https://github.com/lukas-reineke/indent-blankline.nvim) 💅
-* Keybinding for moving to every single panes using <C-?> hjkl 💯 inside neovim or tmux 🔑
+* Keybinding for moving to every single pane or windows using <C-?> hjkl 💯 inside neovim or tmux 🔑
 ### Diagnostics Error 🔎
 <p align="center">
   <img src="/sources/10.png"/>
@@ -62,14 +62,15 @@
   <img src="/sources/6.png" />
 </p>
 
-* This configuration fully support for type checking, diagnostics, completion for every programming language, just add specified language
-* Don't forget to check [PlugInstall](/vimscript/vim-plug/plug.vim)
+* This configuration fully support for type checking, diagnostics, completion for specified programming language, just add another language if you need that
+  using [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
+* Don't forget to check [plugins](/vimscript/vim-plug/plug.vim) for more detail
 ### Lazy Git 🛠
 <p align="center">
   <img src="/sources/12.png" />
 </p>
 
-* Another cool stuf is lazygit, this is interface where we can look and creating and much more for add, commit, change branches, resolve confict and etc.
+* Another cool stuf is lazygit, this is interface where we can looking git information, like add, commit, change branches, resolve confict and etc.
 * Read more [Lazygit](https://github.com/kdheepak/lazygit.nvim)
 ### Telescope 🔭
 <p align="center">
@@ -77,13 +78,13 @@
 </p>
 
 * Read for more [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-* Using telescope with live grep for search specified files in directory, make easy to navigation just type filename
+* Using telescope with live grep for search specified files in directory, make easy to navigation just type what filename you needed
 ### Whickey 💡
 <p align="center">
   <img src="/sources/8.png" />
 </p>
 
-* Save brain capacity for every keystroke 🧠
+* Brain capacity for every keystroke 🧠
 * With [Whickey](https://github.com/folke/which-key.nvim) we can easy using keybinding with another binding as a single character execution 📡
 ### Structure file 📺
 * Directory `$HOME/.config/nvim/`
