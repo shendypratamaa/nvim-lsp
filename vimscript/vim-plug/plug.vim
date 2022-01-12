@@ -11,6 +11,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'folke/trouble.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+  Plug 'ray-x/navigator.lua'
 
   " Git
   Plug 'kdheepak/lazygit.nvim'
@@ -38,7 +40,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
-
   Plug 'shendypratamaa/nvim-ts-rainbow'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'numToStr/Comment.nvim'
