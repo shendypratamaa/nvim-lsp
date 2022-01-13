@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
   Plug 'ray-x/navigator.lua'
+  Plug 'tami5/lspsaga.nvim'
 
   " Git
   Plug 'kdheepak/lazygit.nvim'
@@ -44,6 +45,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'numToStr/Comment.nvim'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
   " Telescope
   Plug 'nvim-telescope/telescope.nvim'
@@ -67,6 +69,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'karb94/neoscroll.nvim'
   Plug 'moll/vim-bbye'
   Plug 'akinsho/toggleterm.nvim'
+  Plug 'petertriho/nvim-scrollbar'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
