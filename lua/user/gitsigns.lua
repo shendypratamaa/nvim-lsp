@@ -24,8 +24,8 @@ gitsigns.setup({
 	keymaps = {
 		-- Default keymap options
 		noremap = true,
-		["n ]d"] = { expr = true, "&diff ? ']d' : '<cmd>Gitsigns next_hunk<CR>'" },
-		["n [d"] = { expr = true, "&diff ? '[d' : '<cmd>Gitsigns prev_hunk<CR>'" },
+		["n ]e"] = { expr = true, "&diff ? ']d' : '<cmd>Gitsigns next_hunk<CR>'" },
+		["n [e"] = { expr = true, "&diff ? '[d' : '<cmd>Gitsigns prev_hunk<CR>'" },
 
 		["n <S-u>"] = "<cmd>Gitsigns preview_hunk<CR>",
 		["n <S-b>"] = "<cmd>Gitsigns blame_line<CR>",

@@ -1,35 +1,80 @@
+local status_ok, navigator = pcall(require, "navigator")
+
+if not status_ok then
+	return
+end
+
 local M = {}
 
 M.setup = function()
-	local signs = {
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
-	}
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
-
-	local config = {
-		virtual_text = false,
-		signs = {
-			active = signs,
+	navigator.setup({
+		debug = false, -- log output
+		width = 0.7, -- valeu of cols
+		height = 0.38, -- listview height
+		preview_height = 0.38,
+		preview_lines = 40, -- total lines in preview screen
+		preview_lines_before = 10, -- lines before the highlight line
+		default_mapping = false,
+		external = nil, -- true: enable for goneovim multigrid otherwise false
+		border = "rounded", -- border style, can be one of 'none', 'single', 'double', "shadow"
+		lines_show_prompt = 20, -- when the result list items number more than lines_show_prompt,
+		treesitter_analysis = true, -- treesitter variable context
+		transparency = 20, -- 0 ~ 100 blur the main window, 100: fully transparent, 0: opaque,  set to nil to disable it
+		combined_attach = "both",
+		lsp_signature_help = true, -- if you would like to hook ray-x/lsp_signature plugin in navigator
+		lsp_installer = true,
+		lsp = {
+			code_action = {
+				enable = true,
+				sign = true,
+				sign_priority = 40,
+				virtual_text = true,
+				virtual_text_icon = true,
+			},
+			code_lens_action = {
+				enable = true,
+				sign = true,
+				sign_priority = 40,
+				virtual_text = true,
+				virtual_text_icon = true,
+			},
+			format_on_save = false, -- set to false on save (if you are using prettier/efm/formater etc)
+			disable_format_cap = {}, -- a list of lsp disable file format (e.g. if you using efm or vim-codeformat etc),
+			disable_lsp = {}, -- a list of lsp server disabled for your project, e.g. denols and tsserver you may
+			code_lens = true,
+			disply_diagnostic_qf = true, -- always show quickfix if there are diagnostic errors
+			diagnostic_load_files = true, -- lsp diagnostic errors list may contains uri that not opened yet set to true
+			diagnostic_virtual_text = true, -- show virtual for diagnostic message
+			diagnostic_update_in_insert = true, -- update diagnostic message in insert mode
+			diagnostic_scrollbar_sign = { "▃", "▆", "█" },
 		},
-		update_in_insert = true,
-		underline = true,
-		severity_sort = true,
-		float = {
-			focusable = true,
-			style = "minimal",
-			border = "rounded",
-			source = "always",
-			header = "",
-			prefix = "",
+		icons = {
+			icons = true,
+			code_action_icon = "🍭",
+			code_lens_action_icon = "👓",
+			diagnostic_head = "🐛",
+			diagnostic_err = "🧨",
+			diagnostic_warn = "👎",
+			diagnostic_info = [[👩]],
+			diagnostic_hint = [[💁]],
+			diagnostic_head_description = "👹",
+			diagnostic_virtual_text = "🦊",
+			diagnostic_file = "🚑",
+			value_changed = "📝",
+			value_definition = "🦕",
+			match_kinds = {
+				var = "🐰",
+				method = "🍔",
+				["function"] = "🗻",
+				parameter = "🪂",
+				associated = "🤝",
+				namespace = "🚀",
+				type = "🎹",
+				field = "🏈",
+			},
+			treesitter_defult = "🌲",
 		},
-	}
-
-	vim.diagnostic.config(config)
+	})
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
@@ -57,26 +102,32 @@ end
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
+	local keymap = vim.api.nvim_buf_set_keymap
+	-- navigator
+	keymap(bufnr, "n", "g0", "<cmd>lua require('navigator.symbols').document_symbols()<CR>", opts)
+	keymap(bufnr, "n", "gW", "<cmd>lua require('navigator.workspace').workspace_symbol()<CR>", opts)
+	keymap(bufnr, "n", "RR", "<cmd>lua require('navigator.reference').reference()<CR>", opts)
+	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration({border = 'rounded', max_width = 80})<CR>", opts)
+	keymap(bufnr, "n", "ga", "<cmd>lua require('navigator.codeAction').code_action()<CR>", opts)
+	keymap(bufnr, "n", "gt", "<cmd>lua require('navigator.treesitter').buf_ts()<CR>", opts)
+	keymap(bufnr, "n", "gT", "<cmd>lua require('navigator.treesitter').bufs_ts()<CR>", opts)
+	keymap(bufnr, "n", "gA", "<cmd>lua require('navigator.codelens').run_action()<CR>", opts)
+	keymap(bufnr, "n", "gF", "<cmd>lua require('navigator.workspace').list_workspace_folders()<CR>", opts)
+	keymap(bufnr, "n", "gM", "<cmd>lua require('navigator.workspace').add_workspace_folder()<CR>", opts)
 
-	-- nvim-lsp binding
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gl",
-		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-		opts
-	)
+	-- saga
+	keymap(bufnr, "n", "gP", "<cmd>Lspsaga lsp_finder<CR>", opts)
+	keymap(bufnr, "n", "gR", "<cmd>Lspsaga rename<CR>", opts)
+	keymap(bufnr, "n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	keymap(bufnr, "n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+	keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+	-- lsp
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover({ popup_opts = { border = single, max_width = 80 }})<CR>", opts)
+	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
@@ -99,6 +150,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
 if not status_ok then
 	return
 end
