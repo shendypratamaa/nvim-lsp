@@ -13,7 +13,7 @@ npairs.setup({
 	},
 	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
 	fast_wrap = {
-		map = "<S-p>",
+		map = "<S-W>",
 		chars = { "{", "[", "(", '"', "'" },
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 		offset = 0,
@@ -25,8 +25,8 @@ npairs.setup({
 	},
 })
 
-if vim.o.ft == 'clap_input' and vim.o.ft == 'guihua' and vim.o.ft == 'guihua_rust' then
-  require'cmp'.setup.buffer { completion = {enable = false} }
+if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft == "guihua_rust" then
+	require("cmp").setup.buffer({ completion = { enable = false } })
 end
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
