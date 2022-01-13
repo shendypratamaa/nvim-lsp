@@ -50,6 +50,26 @@ treesitter.setup({
 			node_decremental = "grr",
 		},
 	},
+	refactor = {
+		highlight_definitions = { enable = false },
+		highlight_current_scope = { enable = false },
+		smart_rename = {
+			enable = true,
+			keymaps = {
+				smart_rename = "grr",
+			},
+		},
+		navigation = {
+			enable = true,
+			keymaps = {
+				goto_definition = "gnd",
+				list_definitions = "gnD",
+				list_definitions_toc = "gO",
+				goto_next_usage = "<s-T>",
+				goto_previous_usage = "<s-G>",
+			},
+		},
+	},
 	rainbow = {
 		enable = true,
 		extended_mode = true,
