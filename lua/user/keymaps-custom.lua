@@ -77,7 +77,7 @@ keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>", opts)
 keymap("n", "<M-p>", ":Telescope<cr>", opts)
 
 -- remove history seach text
-keymap("n", "<M-v>", ":noh<cr>", opts)
+keymap("n", "<S-r>", ":noh<cr>", opts)
 
 -- nvim trouble keymap
 keymap("n", "<C-x>", "<cmd>TroubleToggle<CR>", opts)
