@@ -20,7 +20,5 @@ scroll.setup({
 local t = {}
 t["<C-u>"] = { "scroll", { "-0.20", "true", "100" } }
 t["<C-d>"] = { "scroll", { "0.20", "true", "100" } }
-t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "450" } }
-t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "450" } }
 
 require("neoscroll.config").set_mappings(t)
