@@ -22,7 +22,6 @@ M.setup = function()
 		transparency = 20, -- 0 ~ 100 blur the main window, 100: fully transparent, 0: opaque,  set to nil to disable it
 		combined_attach = "both",
 		lsp_signature_help = true, -- if you would like to hook ray-x/lsp_signature plugin in navigator
-		lsp_installer = true,
 		lsp = {
 			code_action = {
 				enable = true,
@@ -38,39 +37,49 @@ M.setup = function()
 				virtual_text = true,
 				virtual_text_icon = true,
 			},
-			format_on_save = false, -- set to false on save (if you are using prettier/efm/formater etc)
-			disable_format_cap = {}, -- a list of lsp disable file format (e.g. if you using efm or vim-codeformat etc),
-			disable_lsp = {}, -- a list of lsp server disabled for your project, e.g. denols and tsserver you may
-			code_lens = true,
-			disply_diagnostic_qf = true, -- always show quickfix if there are diagnostic errors
-			diagnostic_load_files = true, -- lsp diagnostic errors list may contains uri that not opened yet set to true
-			diagnostic_virtual_text = true, -- show virtual for diagnostic message
-			diagnostic_update_in_insert = true, -- update diagnostic message in insert mode
-			diagnostic_scrollbar_sign = { "▃", "▆", "█" },
+			format_on_save = false,
+			disable_format_cap = {},
+			disable_lsp = {},
+			code_lens = false,
+			disply_diagnostic_qf = true,
+			diagnostic_load_files = false,
+			diagnostic_virtual_text = true,
+			diagnostic_update_in_insert = false,
+			tsserver = {
+				-- filetypes = {'typescript'} -- disable javascript etc,
+				-- set to {} to disable the lspclient for all filetype
+			},
+			sumneko_lua = {
+				-- sumneko_root_path = sumneko_root_path,
+				-- sumneko_binary = sumneko_binary,
+				-- cmd = {'lua-language-server'}
+			},
+			servers = {},
 		},
+		lsp_installer = false,
 		icons = {
 			icons = true,
-			code_action_icon = "🍭",
+			code_action_icon = "🦄",
 			code_lens_action_icon = "👓",
-			diagnostic_head = "🐛",
+			diagnostic_head = "💡",
 			diagnostic_err = "🧨",
-			diagnostic_warn = "👎",
+			diagnostic_warn = "🚧",
 			diagnostic_info = [[👩]],
 			diagnostic_hint = [[💁]],
-			diagnostic_head_description = "👹",
-			diagnostic_virtual_text = "🦊",
-			diagnostic_file = "🚑",
-			value_changed = "📝",
-			value_definition = "🦕",
+			diagnostic_head_description = "👹 ",
+			diagnostic_virtual_text = "🦊 ",
+			diagnostic_file = "🚑 ",
+			value_changed = "📝 ",
+			value_definition = "🦕 ",
 			match_kinds = {
-				var = "🐰",
-				method = "🍔",
-				["function"] = "🗻",
-				parameter = "🪂",
-				associated = "🤝",
-				namespace = "🚀",
-				type = "🎹",
-				field = "🏈",
+				var = "🧛 ",
+				method = "🍔 ",
+				["function"] = "🗻 ",
+				parameter = "🪂 ",
+				associated = "🤝 ",
+				namespace = "🚀 ",
+				type = "🎹 ",
+				field = "🏈 ",
 			},
 			treesitter_defult = "🌲",
 		},
@@ -103,17 +112,16 @@ end
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
+
 	-- navigator
-	keymap(bufnr, "n", "g0", "<cmd>lua require('navigator.symbols').document_symbols()<CR>", opts)
-	keymap(bufnr, "n", "gW", "<cmd>lua require('navigator.workspace').workspace_symbol()<CR>", opts)
-	keymap(bufnr, "n", "RR", "<cmd>lua require('navigator.reference').reference()<CR>", opts)
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration({border = 'rounded', max_width = 80})<CR>", opts)
 	keymap(bufnr, "n", "ga", "<cmd>lua require('navigator.codeAction').code_action()<CR>", opts)
 	keymap(bufnr, "n", "gt", "<cmd>lua require('navigator.treesitter').buf_ts()<CR>", opts)
 	keymap(bufnr, "n", "gT", "<cmd>lua require('navigator.treesitter').bufs_ts()<CR>", opts)
-	keymap(bufnr, "n", "gA", "<cmd>lua require('navigator.codelens').run_action()<CR>", opts)
-	keymap(bufnr, "n", "gF", "<cmd>lua require('navigator.workspace').list_workspace_folders()<CR>", opts)
-	keymap(bufnr, "n", "gM", "<cmd>lua require('navigator.workspace').add_workspace_folder()<CR>", opts)
+	keymap(bufnr, "n", "g0", "<cmd>lua require('navigator.symbols').document_symbols()<CR>", opts)
+	keymap(bufnr, "n", "RR", "<cmd>lua require('navigator.reference').reference()<CR>", opts)
+	-- keymap(bufnr, "n", "gW", "<cmd>lua require('navigator.workspace').workspace_symbol()<CR>", opts)
+	-- keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration({border = 'rounded', max_width = 80})<CR>", opts)
+	-- keymap(bufnr, "n", "gA", "<cmd>lua require('navigator.codelens').run_action()<CR>", opts)
 
 	-- saga
 	keymap(bufnr, "n", "gP", "<cmd>Lspsaga lsp_finder<CR>", opts)
