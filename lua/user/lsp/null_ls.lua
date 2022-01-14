@@ -5,9 +5,7 @@ if not status_ok then
 end
 
 local formatting = null_ls.builtins.formatting
-
 local action = null_ls.builtins.code_actions
-
 local diagnostics = null_ls.builtins.diagnostics
 
 local sources = {
@@ -20,9 +18,9 @@ local sources = {
 			"--tsx-single-quote",
 		},
 	}),
-	-- formatting.stylelint,
+	formatting.stylelint,
 	diagnostics.stylelint,
-	diagnostics.eslint_d,
+	diagnostics.eslint,
 	action.gitsigns,
 }
 
