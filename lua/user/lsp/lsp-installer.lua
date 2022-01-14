@@ -21,7 +21,7 @@ lsp_installer.on_server_ready(function(server)
 	end
 
 	if server.name == "stylelint_lsp" then
-		local stylelint_opts = require("user.lsp.settings.stylelint")
+		local stylelint_opts = require("user.lsp.settings.stylelint_lsp")
 		opts = vim.tbl_deep_extend("force", stylelint_opts, opts)
 	end
 
