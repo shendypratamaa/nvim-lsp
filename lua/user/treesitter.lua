@@ -51,7 +51,7 @@ treesitter.setup({
 		},
 	},
 	refactor = {
-		highlight_definitions = { enable = false },
+		highlight_definitions = { enable = true },
 		highlight_current_scope = { enable = false },
 		smart_rename = {
 			enable = true,
@@ -66,7 +66,7 @@ treesitter.setup({
 				list_definitions = "gnD",
 				list_definitions_toc = "gO",
 				goto_next_usage = "<s-T>",
-				goto_previous_usage = "<s-G>",
+				goto_previous_usage = "<s-F>",
 			},
 		},
 	},
