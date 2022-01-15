@@ -15,6 +15,7 @@ luafile ~/.config/nvim/lua/user/neoscroll.lua
 luafile ~/.config/nvim/lua/user/toggleterm.lua
 luafile ~/.config/nvim/lua/user/scrollbar.lua
 luafile ~/.config/nvim/lua/user/lspsaga.lua
+luafile ~/.config/nvim/lua/user/gps.lua
 
 " markdown
 luafile ~/.config/nvim/lua/user/vimwiki.lua
