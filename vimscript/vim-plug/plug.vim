@@ -70,6 +70,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'moll/vim-bbye'
   Plug 'akinsho/toggleterm.nvim'
   Plug 'petertriho/nvim-scrollbar'
+  Plug 'SmiteshP/nvim-gps'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
