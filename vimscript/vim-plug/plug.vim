@@ -13,7 +13,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
   Plug 'ray-x/navigator.lua'
-  Plug 'tami5/lspsaga.nvim'
 
   " Git
   Plug 'kdheepak/lazygit.nvim'
@@ -55,6 +54,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'Mofiqul/dracula.nvim'
   Plug 'bluz71/vim-nightfly-guicolors'
+  Plug 'rebelot/kanagawa.nvim'
 
   " Themes - Utils
   Plug 'nvim-lualine/lualine.nvim'
@@ -71,6 +71,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'akinsho/toggleterm.nvim'
   Plug 'petertriho/nvim-scrollbar'
   Plug 'SmiteshP/nvim-gps'
+  Plug 'antoinemadec/FixCursorHold.nvim'
+  Plug 'nacro90/numb.nvim'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
