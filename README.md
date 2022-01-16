@@ -22,34 +22,73 @@
 2. [Tmux](https://github.com/tmux/tmux)
 3. [Alacritty](https://github.com/alacritty/alacritty)
 ### Dashboard Section 📠
-<img src="/sources/1.png"/>
---
+<div>
+  <img src="/sources/1.png"/>
+</div>
+
+---
+
 ### Multiple Pane 🥞
-<img src="/sources/2.png"/>
---
+<div>
+  <img src="/sources/2.png"/>
+</div>
+
+---
+
 ### LSP Diagnostics Treesitter 🌲
-<img src="/sources/3.png"/>
---
+<div>
+  <img src="/sources/3.png"/>
+</div>
+
+---
+
 ### Markdown Instant Preview - Hot Reaload 🌭
-<img src="/sources/4.png"/>
---
+<div>
+  <img src="/sources/4.png"/>
+</div>
+
+---
+
 ### LSP Diagnostics Error 🦠
-<img src="/sources/5.png"/>
---
+<div>
+  <img src="/sources/5.png"/>
+</div>
+
+---
+
 ### Forget keymaps ? 🧠
-<img src="/sources/6.png"/>
---
+<div>
+  <img src="/sources/6.png"/>
+</div>
+
+---
+
 ### Lazy GIT 🚀
-<img src="/sources/7.png"/>
---
+<div>
+  <img src="/sources/7.png"/>
+</div>
+
+---
+
 ### Telescope Buffer 🔭
-<img src="/sources/8.png"/>
---
+<div>
+  <img src="/sources/8.png"/>
+</div>
+
+---
+
 ### Telescope Find Files 🔎
-<img src="/sources/9.png"/>
---
+<div>
+  <img src="/sources/9.png"/>
+</div>
+
+---
+
 ### Structure Files 🏔
-<img src="/sources/10.png"/>
---
+<div>
+  <img src="/sources/10.png"/>
+</div>
+
+---
 
 ### Still Maintained 🦄
