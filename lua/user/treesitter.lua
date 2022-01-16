@@ -46,17 +46,17 @@ treesitter.setup({
 		keymaps = {
 			init_selection = "gnn",
 			node_incremental = "gmm",
-			scope_incremental = "gaa",
+			scope_incremental = "gee",
 			node_decremental = "grr",
 		},
 	},
 	refactor = {
-		highlight_definitions = { enable = true },
+		highlight_definitions = { enable = false },
 		highlight_current_scope = { enable = false },
 		smart_rename = {
-			enable = true,
+			enable = false,
 			keymaps = {
-				smart_rename = "grr",
+				smart_rename = "gaa",
 			},
 		},
 		navigation = {
