@@ -1,5 +1,12 @@
 local status_ok, lualine = pcall(require, "lualine")
 
+local gps = require("nvim-gps")
+
+local gps_result = {
+	gps.get_location,
+	cond = gps.get_is_available,
+}
+
 if not status_ok then
 	return
 end
@@ -44,7 +51,7 @@ local filetype = {
 local branch = {
 	"branch",
 	icons_enabled = true,
-	icon = "",
+	icon = "🏡",
 }
 
 local location = {
@@ -61,12 +68,10 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
-
 local filePath = {
 	"filename",
+	icons_enabled = true,
+	icon = "🍰",
 	file_status = true,
 	path = 1,
 
@@ -80,18 +85,18 @@ local filePath = {
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "nightfly", -- available : dracula-nvim, tokyonight, nightfly
-		component_separators = { left = "  ", right = "" },
+		theme = "kanagawa", -- available : dracula-nvim, tokyonight, nightfly
+		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = { mode },
-		lualine_b = { branch, filePath },
-		lualine_c = { diagnostics },
+		lualine_b = { branch },
+		lualine_c = { filePath, gps_result },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { diagnostics, diff, "encoding", filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},

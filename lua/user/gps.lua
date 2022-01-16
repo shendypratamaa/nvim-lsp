@@ -8,10 +8,10 @@ end
 gps.setup({
 	disable_icons = false, -- Setting it to true will disable all icons
 	icons = {
-		["class-name"] = "🍕 ", -- Classes and class-like objects
-		["function-name"] = "🤖 ", -- Functions
-		["method-name"] = "🚜 ", -- Methods (functions inside class-like objects)
-		["container-name"] = "🧬 ", -- Containers (example: lua tables)
+		["class-name"] = "🧛 ", -- Classes and class-like objects
+		["function-name"] = "🍕 ", -- Functions
+		["method-name"] = "🦄 ", -- Methods (functions inside class-like objects)
+		["container-name"] = "🤖 ", -- Containers (example: lua tables)
 		["tag-name"] = "🔖 ", -- Tags (example: html tags)
 	},
 
@@ -79,7 +79,7 @@ gps.setup({
 		--	}
 		--}
 	},
-	separator = " > ",
+	separator = " ✈︎ ",
 	-- limit for amount of context shown
 	-- 0 means no limit
 	-- Note: to make use of depth feature properly, make sure your separator isn't something that can appear
