@@ -34,12 +34,13 @@ local options = {
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
-	colorcolumn = "120",
+	colorcolumn = "110",
 	sidescrolloff = 8,
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
 }
 
 vim.opt.shortmess:append("c")
+vim.g.cursorhold_updatetime = 100
 
 for k, v in pairs(options) do
 	vim.opt[k] = v

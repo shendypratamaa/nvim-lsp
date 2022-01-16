@@ -23,11 +23,7 @@ local status_ok, nvimtree = pcall(require, "nvim-tree")
 
 local config_ok, nvimtreeconfig = pcall(require, "nvim-tree.config")
 
-if not status_ok then
-	return
-end
-
-if not config_ok then
+if not status_ok and config_ok then
 	return
 end
 
