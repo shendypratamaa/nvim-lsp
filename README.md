@@ -1,15 +1,17 @@
 # Neovim-lspconfig 🐣
-*This is repo migration from neovim vim-script* 🛸
-*notes : moving native support, from coc-nvim to native lsp neovim* 🚀
+*This is repo migration from neovim [vim-script](https://github.com/shendypratamaa/nvimscript)* 🛸<br>
+*Moving native support, for language server protocol write in lua* 🚀
 ## Whatever you want to call this 🌈
-> Feel free to clone this 📦<br>
-  Feel free to edit all configuration, based on this configuration 🧛,<br>
+> Feel FREE to clone this 📦<br>
+  Feel FREE to edit all configuration, based on this configuration 🧛,<br>
   Read LICENSE, and do with ur own risk, can't quit neovim and throw your main editor 🤭 🤣
 
+---
+
 * Repo include
-  * Noevim configuration ready to go 🐥,
-  * Tmux config inside extras folder,
-  * Alacritty config inside extras folder
+  * Noevim configuration ready to go 🐣.
+  * Tmux config inside extras folder.
+  * Alacritty config inside extras folder.
 
 * Running on :
   * Macos 12.1,
@@ -87,6 +89,13 @@
 ### Structure Files 🏔
 <div>
   <img src="/sources/10.png"/>
+</div>
+
+---
+
+#### BONUS, dont be mad 🥳
+<div>
+  <img src="/sources/meme.webp" width="30%" />
 </div>
 
 ---
