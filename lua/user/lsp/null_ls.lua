@@ -5,12 +5,23 @@ if not status_ok then
 end
 
 local formatting = null_ls.builtins.formatting
-local action = null_ls.builtins.code_actions
-local diagnostics = null_ls.builtins.diagnostics
+local actions = null_ls.builtins.code_actions
+
+-- local diagnostics = null_ls.builtins.diagnostics || for now disable bcs showing twice with navigator
 
 local sources = {
 	formatting.stylua,
 	formatting.prettier.with({
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"json",
+			"yaml",
+			"markdown",
+			"css",
+		},
 		extra_args = {
 			"--no-semi",
 			"--single-quote",
@@ -18,13 +29,15 @@ local sources = {
 			"--tsx-single-quote",
 		},
 	}),
-	formatting.stylelint,
-	diagnostics.stylelint,
-	diagnostics.eslint,
-	action.gitsigns,
+	formatting.black.with({ extra_args = { "--fast" } }),
+	actions.gitsigns,
+	-- diagnostics.stylelint,
+	-- diagnostics.flake8,
+	-- diagnostics.eslint_d,
 }
 
 null_ls.setup({
+	diagnostics_format = "(#{s}) #{m}",
 	debug = false,
 	sources = sources,
 	on_attach = function(client)

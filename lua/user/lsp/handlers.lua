@@ -24,23 +24,42 @@ M.setup = function()
 		external = nil,
 		lines_show_prompt = 20,
 		treesitter_analysis = true,
-		transparency = 20,
+		transparency = 100,
 		combined_attach = "both",
 		lsp_signature_help = true,
 		default_mapping = false,
 		keymaps = {
+			-- needtobeexplored -- differentbasedonfiletyped
+			{ key = "<C-]>", func = "require('navigator.definition').definition()" },
+			{ key = "RE", func = "require('navigator.reference').reference()" },
+			{ key = "g0", func = "require('navigator.symbols').document_symbols()" },
+			{ key = "gt", func = "require('navigator.treesitter').buf_ts()" },
+			{ key = "gT", func = "require('navigator.treesitter').bufs_ts()" },
+			{ key = "ga", mode = "n", func = "require('navigator.codeAction').code_action()" },
+			{ key = "gA", mode = "v", func = "range_code_action()" },
+			{ key = "RR", func = "require('navigator.rename').rename()" },
+			{ mode = "i", key = "<M-u>", func = "signature_help()" },
+			{ key = "<c-k>", func = "signature_help()" },
+			{ key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
+			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
+			-- { key = "<Space>D", func = "type_definition()" },
+			-- { key = "gp", func = "require('navigator.definition').definition_preview()" },
+			-- { key = "Gr", func = "require('navigator.reference').async_ref()" },
 			{ key = "gi", func = "incoming_calls()" },
 			{ key = "gO", func = "outgoing_calls()" },
-			{ key = "gG", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+			{ key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
 			{ key = "]r", func = "require('navigator.treesitter').goto_next_usage()" },
 			{ key = "[r", func = "require('navigator.treesitter').goto_previous_usage()" },
 			{ key = "[g", func = "require('navigator.dochighlight').hi_symbol()" },
+			{ key = "le", mode = "n", func = "require('navigator.codelens').run_action()" },
+			{ key = "]d", func = "diagnostic.goto_next({ border = 'single', max_width = 80})" },
+			{ key = "[d", func = "diagnostic.goto_prev({ border = 'single', max_width = 80})" },
+			{ key = "gl", func = "require('navigator.diagnostics').show_diagnostics()" },
 			-- { key = "<Space>wa", func = "require('navigator.workspace').add_workspace_folder()" },
 			-- { key = "<Space>wr", func = "require('navigator.workspace').remove_workspace_folder()" },
 			-- { key = "<Space>ff", func = "formatting()", mode = "n" },
 			-- { key = "<Space>ff", func = "range_formatting()", mode = "v" },
 			-- { key = "<Space>wl", func = "require('navigator.workspace').list_workspace_folders()" },
-			{ key = "le", mode = "n", func = "require('navigator.codelens').run_action()" },
 		},
 		on_attach = function(client, bufnr)
 			if client.resolved_capabilities.document_highlight then
@@ -48,7 +67,11 @@ M.setup = function()
 					[[
             augroup lsp_document_highlight
               autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+              hi default GHTextViewDark guifg=#DCD7BA guibg=#363646
+              hi default GHListDark guifg=#C8C093 guibg=#1F1F28
+              hi default GHListHl guifg=#D27E99 guibg=#404254
             augroup END
           ]],
 					false
@@ -57,33 +80,20 @@ M.setup = function()
 
 			local opts = { noremap = true, silent = true }
 			local keymap = vim.api.nvim_buf_set_keymap
-			-- navigator
-			keymap(bufnr, "n", "ga", "<cmd>lua require('navigator.codeAction').code_action()<CR>", opts)
-			keymap(bufnr, "n", "gt", "<cmd>lua require('navigator.treesitter').buf_ts()<CR>", opts)
-			keymap(bufnr, "n", "gT", "<cmd>lua require('navigator.treesitter').bufs_ts()<CR>", opts)
-			keymap(bufnr, "n", "g0", "<cmd>lua require('navigator.symbols').document_symbols()<CR>", opts)
-			keymap(bufnr, "n", "RE", "<cmd>lua require('navigator.reference').reference()<CR>", opts)
-			-- keymap(bufnr, "n", "gW", "<cmd>lua require('navigator.workspace').workspace_symbol()<CR>", opts)
-			-- keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration({border = 'rounded', max_width = 80})<CR>", opts)
 
-			-- saga
-			keymap(bufnr, "n", "gP", "<cmd>Lspsaga lsp_finder<CR>", opts)
-			keymap(bufnr, "n", "gR", "<cmd>Lspsaga rename<CR>", opts)
-			keymap(bufnr, "n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-			keymap(bufnr, "n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-			keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-			keymap(bufnr, "n", "gK", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-
-			-- lsp
+			-- lsp-native
 			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-			keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-			keymap(bufnr, "n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 			keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]])
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+			M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 		end,
 		lsp = {
 			code_action = {
-				enable = true,
+				enable = false,
 				sign = true,
 				sign_priority = 40,
 				virtual_text = true,
@@ -100,10 +110,10 @@ M.setup = function()
 			disable_format_cap = {},
 			disable_lsp = { "tailwindcss" },
 			code_lens = true,
-			disply_diagnostic_qf = false,
-			diagnostic_load_files = false,
+			disply_diagnostic_qf = true,
+			diagnostic_load_files = true,
 			diagnostic_virtual_text = true,
-			diagnostic_update_in_insert = false,
+			diagnostic_update_in_insert = true,
 			tsserver = {
 				on_attach = function(client)
 					client.resolved_capabilities.document_formatting = false
@@ -131,6 +141,7 @@ M.setup = function()
 						.. "/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
 					"--stdio",
 				},
+				capabilities = capabilities,
 			},
 			stylelint_lsp = {
 				on_attach = function(client)
@@ -147,6 +158,31 @@ M.setup = function()
 					install_root_dir .. "/stylelint_lsp/node_modules/stylelint-lsp/dist/index.js",
 					"--stdio",
 				},
+				settings = {
+					stylelintplus = {
+						autoFixOnFormat = false,
+						autoFixOnSave = true,
+						configFile = {},
+						configOverrider = {},
+						cssInJs = true,
+					},
+				},
+			},
+			pyright = {
+				cmd = {
+					install_root_dir .. "/python/node_modules/pyright/langserver.index.js",
+					"--stdio",
+				},
+				settings = {
+					python = {
+						analysis = {
+							typeCheckingMode = "off",
+						},
+					},
+				},
+				on_attach = function(client)
+					client.resolved_capabilities.document_formatting = false
+				end,
 			},
 			tailwindcss = {
 				cmd = {
@@ -161,6 +197,7 @@ M.setup = function()
 						.. "/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server",
 					"--stdio",
 				},
+				capabilities = capabilities,
 			},
 			emmet_ls = {
 				cmd = {
@@ -174,6 +211,7 @@ M.setup = function()
 						.. "/cssls/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server",
 					"--stdio",
 				},
+				capabilities = capabilities,
 			},
 			vimls = {
 				cmd = {
@@ -191,6 +229,7 @@ M.setup = function()
 				"emmet_ls",
 				"tailwindcss",
 				"cssls",
+				"pyright",
 			},
 		},
 		lsp_installer = true,
@@ -233,11 +272,5 @@ M.setup = function()
 		border = "rounded",
 	})
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
