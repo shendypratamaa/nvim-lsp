@@ -28,7 +28,7 @@ keymap("n", "<C-c>", "<ESC>", opts)
 keymap("n", "wq", ":Bdelete<cr>", opts)
 
 -- toggle_term
-keymap("n", "<C-]>", ":ToggleTerm direction=horizontal size=10<cr>", opts)
+keymap("n", "<C-[>", ":ToggleTerm direction=horizontal size=10<cr>", opts)
 
 -- window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
