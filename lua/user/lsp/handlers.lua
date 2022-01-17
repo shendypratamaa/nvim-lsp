@@ -29,7 +29,6 @@ M.setup = function()
 		lsp_signature_help = true,
 		default_mapping = false,
 		keymaps = {
-			-- needtobeexplored -- differentbasedonfiletyped
 			{ key = "<C-]>", func = "require('navigator.definition').definition()" },
 			{ key = "RE", func = "require('navigator.reference').reference()" },
 			{ key = "g0", func = "require('navigator.symbols').document_symbols()" },
@@ -84,11 +83,23 @@ M.setup = function()
 			-- lsp-native
 			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 			keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]])
+			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
+
+			if client.name == "tsserver" then
+				client.resolved_capabilities.document_formatting = false
+			end
+			if client.name == "jsonls" then
+				client.resolved_capabilities.document_formatting = false
+			end
+			if client.name == "stylelint_lsp" then
+				client.resolved_capabilities.document_formatting = false
+			end
+			if client.name == "sumneko_lua" then
+				client.resolved_capabilities.document_formatting = false
+			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 			M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 		end,
 		lsp = {
@@ -110,10 +121,145 @@ M.setup = function()
 			disable_format_cap = {},
 			disable_lsp = { "tailwindcss" },
 			code_lens = true,
-			disply_diagnostic_qf = true,
-			diagnostic_load_files = true,
+			disply_diagnostic_qf = false,
+			diagnostic_load_files = false,
 			diagnostic_virtual_text = true,
-			diagnostic_update_in_insert = true,
+			diagnostic_update_in_insert = false,
+			jsonls = {
+				cmd = {
+					install_root_dir
+						.. "/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
+					"--stdio",
+				},
+				settings = {
+					json = {
+						schemas = vim.list_extend(
+							{
+								{
+									description = "TypeScript compiler configuration file",
+									fileMatch = {
+										"tsconfig.json",
+										"tsconfig.*.json",
+									},
+									url = "https://json.schemastore.org/tsconfig.json",
+								},
+								{
+									description = "Lerna config",
+									fileMatch = { "lerna.json" },
+									url = "https://json.schemastore.org/lerna.json",
+								},
+								{
+									description = "Babel configuration",
+									fileMatch = {
+										".babelrc.json",
+										".babelrc",
+										"babel.config.json",
+									},
+									url = "https://json.schemastore.org/babelrc.json",
+								},
+								{
+									description = "ESLint config",
+									fileMatch = {
+										".eslintrc.json",
+										".eslintrc",
+									},
+									url = "https://json.schemastore.org/eslintrc.json",
+								},
+								{
+									description = "Bucklescript config",
+									fileMatch = { "bsconfig.json" },
+									url = "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/8.2.0/docs/docson/build-schema.json",
+								},
+								{
+									description = "Prettier config",
+									fileMatch = {
+										".prettierrc",
+										".prettierrc.json",
+										"prettier.config.json",
+									},
+									url = "https://json.schemastore.org/prettierrc",
+								},
+								{
+									description = "Vercel Now config",
+									fileMatch = { "now.json" },
+									url = "https://json.schemastore.org/now",
+								},
+								{
+									description = "Stylelint config",
+									fileMatch = {
+										".stylelintrc",
+										".stylelintrc.json",
+										"stylelint.config.json",
+									},
+									url = "https://json.schemastore.org/stylelintrc",
+								},
+								{
+									description = "Configuration file as an alternative for configuring your repository in the settings page.",
+									fileMatch = {
+										".codeclimate.json",
+									},
+									url = "https://json.schemastore.org/codeclimate.json",
+								},
+								{
+									description = "Json schema for properties json file for a GitHub Workflow template",
+									fileMatch = {
+										".github/workflow-templates/**.properties.json",
+									},
+									url = "https://json.schemastore.org/github-workflow-template-properties.json",
+								},
+								{
+									description = "golangci-lint configuration file",
+									fileMatch = {
+										".golangci.toml",
+										".golangci.json",
+									},
+									url = "https://json.schemastore.org/golangci-lint.json",
+								},
+								{
+									description = "JSON schema for the JSON Feed format",
+									fileMatch = {
+										"feed.json",
+									},
+									url = "https://json.schemastore.org/feed.json",
+									versions = {
+										["1"] = "https://json.schemastore.org/feed-1.json",
+										["1.1"] = "https://json.schemastore.org/feed.json",
+									},
+								},
+								{
+									description = "Packer template JSON configuration",
+									fileMatch = {
+										"packer.json",
+									},
+									url = "https://json.schemastore.org/packer.json",
+								},
+								{
+									description = "NPM configuration file",
+									fileMatch = {
+										"package.json",
+									},
+									url = "https://json.schemastore.org/package.json",
+								},
+								{
+									description = "JSON schema for Visual Studio component configuration files",
+									fileMatch = {
+										"*.vsconfig",
+									},
+									url = "https://json.schemastore.org/vsconfig.json",
+								},
+								{
+									description = "Resume json",
+									fileMatch = { "resume.json" },
+									url = "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+								},
+							},
+							require("schemastore").json.schemas({
+								select = {},
+							})
+						),
+					},
+				},
+			},
 			tsserver = {
 				on_attach = function(client)
 					client.resolved_capabilities.document_formatting = false
@@ -124,48 +270,35 @@ M.setup = function()
 				},
 			},
 			sumneko_lua = {
-				on_attach = function(client)
-					client.resolved_capabilities.document_formatting = false
-				end,
 				cmd = {
 					install_root_dir .. "/sumneko_lua/extension/server/bin/lua-language-server",
 					"--stdio",
 				},
-			},
-			jsonls = {
-				on_attach = function(client)
-					client.resolved_capabilities.document_formatting = false
-				end,
-				cmd = {
-					install_root_dir
-						.. "/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
-					"--stdio",
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							library = {
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.stdpath("config") .. "/lua"] = true,
+							},
+						},
+					},
 				},
-				capabilities = capabilities,
 			},
 			stylelint_lsp = {
-				on_attach = function(client)
-					client.resolved_capabilities.document_formatting = false
-				end,
+				cmd = {
+					install_root_dir .. "/stylelint_lsp/node_modules/stylelint-lsp/dist/index.js",
+					"--stdio",
+				},
 				filetypes = {
 					"css",
 					"scss",
 					"sass",
 					"less",
 					"postcss",
-				},
-				cmd = {
-					install_root_dir .. "/stylelint_lsp/node_modules/stylelint-lsp/dist/index.js",
-					"--stdio",
-				},
-				settings = {
-					stylelintplus = {
-						autoFixOnFormat = false,
-						autoFixOnSave = true,
-						configFile = {},
-						configOverrider = {},
-						cssInJs = true,
-					},
 				},
 			},
 			pyright = {
@@ -176,13 +309,13 @@ M.setup = function()
 				settings = {
 					python = {
 						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "workspace",
 							typeCheckingMode = "off",
 						},
 					},
 				},
-				on_attach = function(client)
-					client.resolved_capabilities.document_formatting = false
-				end,
 			},
 			tailwindcss = {
 				cmd = {
@@ -197,7 +330,6 @@ M.setup = function()
 						.. "/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server",
 					"--stdio",
 				},
-				capabilities = capabilities,
 			},
 			emmet_ls = {
 				cmd = {
@@ -211,7 +343,6 @@ M.setup = function()
 						.. "/cssls/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server",
 					"--stdio",
 				},
-				capabilities = capabilities,
 			},
 			vimls = {
 				cmd = {
