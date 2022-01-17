@@ -2,15 +2,15 @@ local status_ok, navigator = pcall(require, "navigator")
 
 local status_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
+local path = require("nvim-lsp-installer.path")
+
+local install_root_dir = path.concat({ vim.fn.stdpath("data"), "lsp_servers" })
+
 if not status_ok and status_cmp then
 	return
 end
 
 local M = {}
-
-local path = require("nvim-lsp-installer.path")
-
-local install_root_dir = path.concat({ vim.fn.stdpath("data"), "lsp_servers" })
 
 M.setup = function()
 	navigator.setup({
@@ -28,6 +28,7 @@ M.setup = function()
 		combined_attach = "both",
 		lsp_signature_help = true,
 		default_mapping = false,
+		lsp_installer = true,
 		keymaps = {
 			{ key = "<C-]>", func = "require('navigator.definition').definition()" },
 			{ key = "RE", func = "require('navigator.reference').reference()" },
@@ -41,6 +42,14 @@ M.setup = function()
 			{ key = "<c-k>", func = "signature_help()" },
 			{ key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
 			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
+			{
+				key = "FR",
+				func = "require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})",
+			},
+			{
+				key = "FF",
+				func = "require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})",
+			},
 			-- { key = "<Space>D", func = "type_definition()" },
 			-- { key = "gp", func = "require('navigator.definition').definition_preview()" },
 			-- { key = "Gr", func = "require('navigator.reference').async_ref()" },
@@ -83,6 +92,13 @@ M.setup = function()
 			-- lsp-native
 			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 			keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+			keymap(
+				bufnr,
+				"n",
+				"FT",
+				"<cmd>lua require('pretty-fold.preview').border_shift({ border = 'rounded'})<CR>",
+				opts
+			)
 			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
 
 			if client.name == "tsserver" then
@@ -363,7 +379,6 @@ M.setup = function()
 				"pyright",
 			},
 		},
-		lsp_installer = true,
 		icons = {
 			icons = true,
 			code_action_icon = "🦄",
