@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'SmiteshP/nvim-gps'
   Plug 'antoinemadec/FixCursorHold.nvim'
   Plug 'nacro90/numb.nvim'
+  Plug 'anuvyklack/pretty-fold.nvim'
 
   "notes-takingapp
   Plug 'vimwiki/vimwiki'
