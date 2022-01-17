@@ -68,14 +68,26 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
+  augroup remember_folds
+    autocmd!
+    autocmd BufWinEnter * silent! loadview
+  augroup END
+]])
+
+vim.cmd([[
   augroup filetypedetect
     au! BufRead,BufNewFile */vimwiki/*		set filetype=vimwiki
   augroup END
+]])
+
+vim.cmd([[
+  set foldmethod=manual
+  set nofoldenable
+  set foldlevel=99
+  set foldexpr=nvim_treesitter#foldexpr()
 ]])
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]])
 vim.cmd([[set nocompatible ]])
--- remove folding unused space ~
-vim.cmd([[set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]])
