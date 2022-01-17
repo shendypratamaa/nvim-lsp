@@ -21,6 +21,7 @@ local sources = {
 			"yaml",
 			"markdown",
 			"css",
+			"html",
 		},
 		extra_args = {
 			"--no-semi",
