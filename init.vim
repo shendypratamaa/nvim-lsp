@@ -16,6 +16,7 @@ luafile ~/.config/nvim/lua/user/toggleterm.lua
 luafile ~/.config/nvim/lua/user/scrollbar.lua
 luafile ~/.config/nvim/lua/user/gps.lua
 luafile ~/.config/nvim/lua/user/numbpeek.lua
+luafile ~/.config/nvim/lua/user/fold.lua
 
 " markdown
 luafile ~/.config/nvim/lua/user/vimwiki.lua
