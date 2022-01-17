@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'b0o/SchemaStore.nvim'
 
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
