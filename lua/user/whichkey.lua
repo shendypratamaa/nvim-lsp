@@ -132,15 +132,6 @@ local keybinds = {
 		j = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 	},
-	W = {
-		name = "+WIKI 🧛",
-		w = { "<cmd>VimwikiIndex<cr>", "Open Wiki Index L-w-w" },
-		W = { "<cmd>VimwikiDiaryIndex<cr>", "Diary Index L-w-L-i" },
-		n = { "<cmd>VimwikiMakeDiaryNote<cr>", "Diary Today L-w-L-t" },
-		m = { "<cmd>VimwikiMakeTomorrowDiaryNote<cr>", "Diary Tommorow (+1) L-w-L-m" },
-		M = { "<cmd>VimwikiMakeYesterdayDiaryNote<cr>", "Diary Yesterday (-1) L-w-L-y" },
-		s = { "<cmd>VimwikiUISelect<cr>", "Wiki Selected L-w-s" },
-	},
 }
 
 wk.setup(setup)
