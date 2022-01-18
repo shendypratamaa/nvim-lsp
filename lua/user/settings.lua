@@ -47,11 +47,11 @@ for k, v in pairs(options) do
 end
 
 vim.cmd([[
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-:augroup END
+  augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+  augroup END
 ]])
 
 vim.cmd([[
@@ -70,20 +70,14 @@ vim.cmd([[
 vim.cmd([[
   augroup remember_folds
     autocmd!
-    autocmd BufWinEnter * silent! loadview
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent! loadview
   augroup END
 ]])
 
 vim.cmd([[
-  augroup filetypedetect
-    au! BufRead,BufNewFile */vimwiki/*		set filetype=vimwiki
-  augroup END
-]])
-
-vim.cmd([[
-  set foldmethod=manual
+  set foldmethod=indent
   set nofoldenable
-  set foldlevel=99
   set foldexpr=nvim_treesitter#foldexpr()
 ]])
 

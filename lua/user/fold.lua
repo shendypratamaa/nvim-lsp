@@ -6,7 +6,7 @@ end
 
 pretty_fold.setup({
 	require("pretty-fold.preview").setup_keybinding("h"),
-	fill_char = "━",
+	fill_char = "•",
 	border = "rounded",
 	sections = {
 		left = {
@@ -16,13 +16,13 @@ pretty_fold.setup({
 			end,
 			" ",
 			"number_of_folded_lines",
-			":",
+			" : ",
 			"content",
 		},
 		right = {
 			" ",
 			"number_of_folded_lines",
-			": ",
+			" : ",
 			"percentage",
 			" ",
 			function(config)
