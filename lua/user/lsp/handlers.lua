@@ -38,8 +38,8 @@ M.setup = function()
 			{ key = "ga", mode = "n", func = "require('navigator.codeAction').code_action()" },
 			{ key = "gA", mode = "v", func = "range_code_action()" },
 			{ key = "RR", func = "require('navigator.rename').rename()" },
-			{ mode = "i", key = "<M-u>", func = "signature_help()" },
-			{ key = "<c-k>", func = "signature_help()" },
+			-- { mode = "i", key = "<M-u>", func = "signature_help()" }, -- conflict key
+			{ key = "gk", func = "signature_help()" },
 			{ key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
 			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
 			{
