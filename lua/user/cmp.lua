@@ -118,6 +118,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "emoji" },
 		{ name = "neorg" },
 	},
 	confirm_opts = {
