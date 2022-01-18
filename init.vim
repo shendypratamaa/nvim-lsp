@@ -18,10 +18,6 @@ luafile ~/.config/nvim/lua/user/gps.lua
 luafile ~/.config/nvim/lua/user/numbpeek.lua
 luafile ~/.config/nvim/lua/user/fold.lua
 
-" markdown
-luafile ~/.config/nvim/lua/user/vimwiki.lua
-luafile ~/.config/nvim/lua/user/instant-markdown.lua
-
 " keymaps
 luafile ~/.config/nvim/lua/user/keymaps-custom.lua
 luafile ~/.config/nvim/lua/user/whichkey.lua
@@ -42,6 +38,10 @@ luafile ~/.config/nvim/lua/user/treesitter.lua
 luafile ~/.config/nvim/lua/user/autopairs.lua
 luafile ~/.config/nvim/lua/user/autotag.lua
 luafile ~/.config/nvim/lua/user/comment.lua
+
+" note taking apps
+luafile ~/.config/nvim/lua/user/neorg.lua
+luafile ~/.config/nvim/lua/user/instant-markdown.lua
 
 " Git
 luafile ~/.config/nvim/lua/user/lazygit.lua

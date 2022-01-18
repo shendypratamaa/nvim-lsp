@@ -77,6 +77,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'anuvyklack/pretty-fold.nvim'
 
   "notes-takingapp
+  Plug 'nvim-neorg/neorg'
   Plug 'vimwiki/vimwiki'
   Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
