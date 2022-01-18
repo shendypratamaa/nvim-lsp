@@ -17,17 +17,30 @@ local enabled_list = {
 	"markdown",
 }
 
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_configs.norg = {
+	install_info = {
+		url = "https://github.com/nvim-neorg/tree-sitter-norg",
+		files = { "src/parser.c", "src/scanner.cc" },
+		branch = "main",
+	},
+}
+
 treesitter.setup({
 	ensure_installed = {
 		"html",
 		"css",
 		"javascript",
+		"typescript",
 		"lua",
 		"vim",
 		"tsx",
-		"typescript",
-		"markdown",
 		"json",
+		"cpp",
+		"c",
+		"markdown",
+		"norg",
 	},
 	ignore_install = {},
 	autopairs = {
