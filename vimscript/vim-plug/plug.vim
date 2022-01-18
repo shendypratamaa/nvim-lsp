@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
   Plug 'ray-x/navigator.lua'
+  Plug 'b0o/SchemaStore.nvim'
 
   " Git
   Plug 'kdheepak/lazygit.nvim'
@@ -35,7 +36,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
-  Plug 'b0o/SchemaStore.nvim'
+  Plug 'hrsh7th/cmp-emoji'
 
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -74,7 +75,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'SmiteshP/nvim-gps'
   Plug 'antoinemadec/FixCursorHold.nvim'
   Plug 'nacro90/numb.nvim'
-  Plug 'anuvyklack/pretty-fold.nvim'
+  Plug 'shendypratamaa/pretty-fold.nvim'
 
   "notes-takingapp
   Plug 'nvim-neorg/neorg'
