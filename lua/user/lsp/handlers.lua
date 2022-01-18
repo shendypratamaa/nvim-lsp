@@ -92,13 +92,7 @@ M.setup = function()
 			-- lsp-native
 			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 			keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-			keymap(
-				bufnr,
-				"n",
-				"FT",
-				"<cmd>lua require('pretty-fold.preview').border_shift({ border = 'rounded'})<CR>",
-				opts
-			)
+			keymap(bufnr, "n", "m", "<cmd>IndentBlanklineToggle<CR>", opts)
 			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
 
 			if client.name == "tsserver" then
@@ -120,10 +114,10 @@ M.setup = function()
 		end,
 		lsp = {
 			code_action = {
-				enable = false,
+				enable = true,
 				sign = true,
 				sign_priority = 40,
-				virtual_text = true,
+				virtual_text = false,
 				virtual_text_icon = true,
 			},
 			code_lens_action = {
@@ -137,10 +131,10 @@ M.setup = function()
 			disable_format_cap = {},
 			disable_lsp = { "tailwindcss" },
 			code_lens = true,
-			disply_diagnostic_qf = false,
-			diagnostic_load_files = false,
+			disply_diagnostic_qf = true,
+			diagnostic_load_files = true,
 			diagnostic_virtual_text = true,
-			diagnostic_update_in_insert = false,
+			diagnostic_update_in_insert = true,
 			jsonls = {
 				cmd = {
 					install_root_dir
