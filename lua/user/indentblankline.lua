@@ -5,8 +5,9 @@ vim.cmd([[highlight IndentBlanklineIndent4 guifg=#bd93f9 gui=nocombine]])
 vim.cmd([[highlight IndentBlanklineIndent5 guifg=#6272a4 gui=nocombine]])
 vim.cmd([[highlight IndentBlanklineIndent6 guifg=#f1fa8c gui=nocombine]])
 
-vim.opt.list = true
+vim.opt.list = false
 vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_enabled = false
 vim.g.indent_blankline_space_char_highlight_list = {
 	"Error",
 	"Function",
