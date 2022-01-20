@@ -30,10 +30,10 @@ parser_configs.norg = {
 treesitter.setup({
 	ensure_installed = {
 		"html",
+		"lua",
 		"css",
 		"javascript",
 		"typescript",
-		"lua",
 		"vim",
 		"tsx",
 		"json",
@@ -78,8 +78,8 @@ treesitter.setup({
 				goto_definition = "gnd",
 				list_definitions = "gnD",
 				list_definitions_toc = "gO",
-				goto_next_usage = "<s-T>",
-				goto_previous_usage = "<s-F>",
+				goto_next_usage = "<Tab>",
+				goto_previous_usage = "<S-Tab>",
 			},
 		},
 	},
@@ -114,10 +114,10 @@ treesitter.setup({
 
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.scm
-				["tf"] = "@function.outer",
-				["ti"] = "@function.inner",
-				["tc"] = "@class.outer",
-				["te"] = "@class.inner",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
 
 				-- Or you can define your own textobjects like this
 				["iF"] = {
@@ -125,15 +125,6 @@ treesitter.setup({
 					cpp = "(function_definition) @function",
 					c = "(function_definition) @function",
 					java = "(method_declaration) @function",
-				},
-			},
-			swap = {
-				enable = true,
-				swap_next = {
-					["<TAB>"] = "@parameter.inner",
-				},
-				swap_previous = {
-					["<S-TAB>"] = "@parameter.inner",
 				},
 			},
 			move = {
@@ -160,15 +151,33 @@ treesitter.setup({
 				enable = true,
 				border = "rounded",
 				peek_definition_code = {
-					["<C-w>j"] = "@function.outer",
-					["<C-w>k"] = "@class.outer",
+					["<leader>df"] = "@function.outer",
+					["<leader>dF"] = "@class.outer",
 				},
 			},
 		},
-		context_commentstring = {
-			enable = true,
-			enable_autocmd = false,
-		},
-		indent = { enable = true, disable = { "yaml" } },
 	},
+	textsubjects = {
+		enable = true,
+		prev_selection = ",",
+		keymaps = {
+			["."] = "textsubjects-smart",
+			[";"] = "textsubjects-container-outer",
+		},
+	},
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+		config = {
+			javascript = {
+				__default = "// %s",
+				jsx_element = "{/* %s */}",
+				jsx_fragment = "{/* %s */}",
+				jsx_attribute = "// %s",
+				comment = "// %s",
+			},
+			typescript = { __default = "// %s", __multiline = "/* %s */" },
+		},
+	},
+	indent = { enable = true, disable = { "yaml" } },
 })
