@@ -109,6 +109,6 @@ telescope.setup({
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		generic_sorter = require("telescope.sorters").get_fzf_sorter,
-		extension = require("telescope").load_extension("fzf"),
+		extension = telescope.load_extension("fzf"),
 	},
 })
