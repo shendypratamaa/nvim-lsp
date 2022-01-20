@@ -18,7 +18,7 @@ M.setup = function()
 		width = 0.7,
 		height = 0.4,
 		preview_height = 0.4,
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		border = "rounded",
 		preview_lines = 40,
 		preview_lines_before = 15,
 		external = nil,
@@ -29,6 +29,7 @@ M.setup = function()
 		lsp_signature_help = true,
 		default_mapping = false,
 		lsp_installer = true,
+
 		keymaps = {
 			{ key = "<C-]>", func = "require('navigator.definition').definition()" },
 			{ key = "RE", func = "require('navigator.reference').reference()" },
@@ -50,6 +51,7 @@ M.setup = function()
 				key = "FF",
 				func = "require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})",
 			},
+			-- { key = "ZZ", func = "require('zen-mode').toggle()" }, -- breaking changes because treesitter shit !
 			-- { key = "<Space>D", func = "type_definition()" },
 			-- { key = "gp", func = "require('navigator.definition').definition_preview()" },
 			-- { key = "Gr", func = "require('navigator.reference').async_ref()" },
@@ -69,6 +71,7 @@ M.setup = function()
 			-- { key = "<Space>ff", func = "range_formatting()", mode = "v" },
 			-- { key = "<Space>wl", func = "require('navigator.workspace').list_workspace_folders()" },
 		},
+
 		on_attach = function(client, bufnr)
 			if client.resolved_capabilities.document_highlight then
 				vim.api.nvim_exec(
@@ -91,27 +94,15 @@ M.setup = function()
 
 			-- lsp-native
 			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-			keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-			keymap(bufnr, "n", "m", "<cmd>IndentBlanklineToggle<CR>", opts)
+			keymap(bufnr, "n", "<C-m>", "<cmd>IndentBlanklineToggle<CR>", opts)
+			keymap(bufnr, "n", "ZZ", "<cmd>lua require('zen-mode').toggle()<CR>", opts)
 			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
-
-			if client.name == "tsserver" then
-				client.resolved_capabilities.document_formatting = false
-			end
-			if client.name == "jsonls" then
-				client.resolved_capabilities.document_formatting = false
-			end
-			if client.name == "stylelint_lsp" then
-				client.resolved_capabilities.document_formatting = false
-			end
-			if client.name == "sumneko_lua" then
-				client.resolved_capabilities.document_formatting = false
-			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 			M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 		end,
+
 		lsp = {
 			code_action = {
 				enable = true,
@@ -128,13 +119,14 @@ M.setup = function()
 				virtual_text_icon = true,
 			},
 			format_on_save = false,
-			disable_format_cap = {},
-			disable_lsp = { "tailwindcss" },
+			disable_format_cap = { "tsserver", "stylelint_lsp", "sumneko_lua", "jsonls" },
+			disable_lsp = { "tailwindcss", "flow" },
 			code_lens = true,
 			disply_diagnostic_qf = true,
 			diagnostic_load_files = true,
 			diagnostic_virtual_text = true,
 			diagnostic_update_in_insert = true,
+
 			jsonls = {
 				cmd = {
 					install_root_dir
@@ -271,9 +263,6 @@ M.setup = function()
 				},
 			},
 			tsserver = {
-				on_attach = function(client)
-					client.resolved_capabilities.document_formatting = false
-				end,
 				cmd = {
 					install_root_dir .. "/tsserver/node_modules/typescript-language-server/lib/cli.js",
 					"--stdio",
@@ -373,6 +362,7 @@ M.setup = function()
 				"pyright",
 			},
 		},
+
 		icons = {
 			icons = true,
 			code_action_icon = "🦄",
