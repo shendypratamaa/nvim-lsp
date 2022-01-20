@@ -103,14 +103,6 @@ _Moving native support, for language server protocol write in lua_ 🚀
 
 ---
 
-### Structure Files 🏔
-
-<div>
-  <img src="/sources/10.png"/>
-</div>
-
----
-
 #### BONUS, dont be mad 🥳
 
 <div>
