@@ -1,9 +1,7 @@
 local status_ok, navigator = pcall(require, "navigator")
-
 local status_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 local path = require("nvim-lsp-installer.path")
-
 local install_root_dir = path.concat({ vim.fn.stdpath("data"), "lsp_servers" })
 
 if not status_ok and status_cmp then
@@ -11,6 +9,52 @@ if not status_ok and status_cmp then
 end
 
 local M = {}
+
+local function lsp_highlight_document(client)
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_exec(
+			[[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+      		  autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+
+              hi default GHTextViewDark guifg=#DCD7BA guibg=#363646
+              hi default GHListDark guifg=#C8C093 guibg=#1F1F28
+              hi default GHListHl guifg=#D27E99 guibg=#404254
+            augroup END
+          ]],
+			false
+		)
+	end
+end
+
+local function lsp_keymaps(bufnr)
+	local opts = { noremap = true, silent = true }
+	local keymap = vim.api.nvim_buf_set_keymap
+
+	-- telescope jhonson lmao !
+	keymap(bufnr, "n", "FF", "<cmd>lua require('user.telescope').unicorns_search()<CR>", opts)
+	keymap(bufnr, "n", "FR", "<cmd>lua require('user.telescope').unicorns_buffers()<CR>", opts)
+	-- keymap(bufnr, "n", "FE", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
+
+	-- LspKeymap
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "<C-m>", "<cmd>IndentBlanklineToggle<CR>", opts)
+	keymap(bufnr, "n", "ZZ", "<cmd>lua require('zen-mode').toggle()<CR>", opts)
+
+	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
+end
+
+M.on_attach = function(client, bufnr)
+	lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 M.setup = function()
 	navigator.setup({
@@ -43,15 +87,6 @@ M.setup = function()
 			{ key = "gk", func = "signature_help()" },
 			{ key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
 			{ key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
-			{
-				key = "FR",
-				func = "require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})",
-			},
-			{
-				key = "FF",
-				func = "require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})",
-			},
-			-- { key = "ZZ", func = "require('zen-mode').toggle()" }, -- breaking changes because treesitter shit !
 			-- { key = "<Space>D", func = "type_definition()" },
 			-- { key = "gp", func = "require('navigator.definition').definition_preview()" },
 			-- { key = "Gr", func = "require('navigator.reference').async_ref()" },
@@ -62,8 +97,6 @@ M.setup = function()
 			{ key = "[r", func = "require('navigator.treesitter').goto_previous_usage()" },
 			{ key = "[g", func = "require('navigator.dochighlight').hi_symbol()" },
 			{ key = "le", mode = "n", func = "require('navigator.codelens').run_action()" },
-			{ key = "]d", func = "diagnostic.goto_next({ border = 'single', max_width = 80})" },
-			{ key = "[d", func = "diagnostic.goto_prev({ border = 'single', max_width = 80})" },
 			{ key = "gl", func = "require('navigator.diagnostics').show_diagnostics()" },
 			-- { key = "<Space>wa", func = "require('navigator.workspace').add_workspace_folder()" },
 			-- { key = "<Space>wr", func = "require('navigator.workspace').remove_workspace_folder()" },
@@ -73,34 +106,8 @@ M.setup = function()
 		},
 
 		on_attach = function(client, bufnr)
-			if client.resolved_capabilities.document_highlight then
-				vim.api.nvim_exec(
-					[[
-            augroup lsp_document_highlight
-              autocmd! * <buffer>
-              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-              hi default GHTextViewDark guifg=#DCD7BA guibg=#363646
-              hi default GHListDark guifg=#C8C093 guibg=#1F1F28
-              hi default GHListHl guifg=#D27E99 guibg=#404254
-            augroup END
-          ]],
-					false
-				)
-			end
-
-			local opts = { noremap = true, silent = true }
-			local keymap = vim.api.nvim_buf_set_keymap
-
-			-- lsp-native
-			keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-			keymap(bufnr, "n", "<C-m>", "<cmd>IndentBlanklineToggle<CR>", opts)
-			keymap(bufnr, "n", "ZZ", "<cmd>lua require('zen-mode').toggle()<CR>", opts)
-			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting_sync()]])
-
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-			M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+			lsp_keymaps(bufnr)
+			lsp_highlight_document(client)
 		end,
 
 		lsp = {
