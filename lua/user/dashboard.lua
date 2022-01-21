@@ -22,7 +22,7 @@ local header = {
 	},
 }
 
-local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | wc -l | tr -d "\n" ')
+local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer/" | ghead -n -2 | wc -l | tr -d "\n" ')
 local plugins = handle:read("*a")
 handle:close()
 
@@ -67,7 +67,7 @@ local marks = {
 		[[🆄 🅽 🅸 🅲 🅾 🆁 🅽 🆂 🦄]],
 	},
 	opts = {
-		position = "left",
+		position = "center",
 		hl = "AlphaFooter",
 	},
 }
@@ -109,7 +109,7 @@ local buttons = {
 		button("r", "🔖 ➡️ Recently Files", ":Telescope oldfiles <cr>"),
 		button("t", "🔭 ➡️ Find Text", ":Telescope live_grep <cr>"),
 		button("w", "🧛 ➡️ Open Notes", ":e ~/.notes<cr>"),
-		button("n", "🤖 ➡️ Configuration Neovim", ":e ~/.config/nvim/init.vim<cr>"),
+		button("n", "🤖 ➡️ Configuration Neovim", ":e ~/.config/nvim/init.lua<cr>"),
 		button("a", "🌈 ➡️ Configuration Alacritty", ":e ~/.config/alacritty/alacritty.yml<cr>"),
 		button("z", "🪐 ➡️ Configuration Zshell", ":e ~/.zshrc<cr>"),
 		button("d", "🦕 ➡️ Configuration Dashboard", ":e ~/.config/nvim/lua/user/dashboard.lua<cr>"),
@@ -131,9 +131,9 @@ local section = {
 
 local opts = {
 	layout = {
-		{ type = "padding", val = 6 },
+		{ type = "padding", val = 4 },
 		section.header,
-		{ type = "padding", val = 0 },
+		{ type = "padding", val = 1 },
 		section.heading,
 
 		section.plugin_count,
@@ -141,7 +141,7 @@ local opts = {
 		section.buttons,
 		{ type = "padding", val = 1 },
 		section.footer,
-		{ type = "padding", val = 10 },
+		{ type = "padding", val = 4 },
 		section.marks,
 	},
 	opts = {
