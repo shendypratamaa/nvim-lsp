@@ -11,10 +11,10 @@ local enabled_list = {
   "javascript",
   "tsx",
   "json",
+  "jsonc",
   "typescript",
   "javascriptreact",
   "typescriptreact",
-  "markdown",
 }
 
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
@@ -37,6 +37,7 @@ treesitter.setup {
     "vim",
     "tsx",
     "json",
+    "jsonc",
     "cpp",
     "c",
     "markdown",
