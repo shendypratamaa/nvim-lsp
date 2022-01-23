@@ -103,8 +103,8 @@ M.setup = function()
       { key = "gi", func = "incoming_calls()" },
       { key = "gO", func = "outgoing_calls()" },
       { key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
-      { key = "]r", func = "require('navigator.treesitter').goto_next_usage()" },
-      { key = "[r", func = "require('navigator.treesitter').goto_previous_usage()" },
+      { key = "]d", func = "require('navigator.treesitter').goto_next_usage()" },
+      { key = "[d", func = "require('navigator.treesitter').goto_previous_usage()" },
       { key = "[g", func = "require('navigator.dochighlight').hi_symbol()" },
       { key = "le", mode = "n", func = "require('navigator.codelens').run_action()" },
       { key = "gl", func = "require('navigator.diagnostics').show_diagnostics()" },
@@ -158,12 +158,13 @@ M.setup = function()
             schemas = jsonschemas,
           },
         },
+        filetypes = { "jsonc", "json" },
+        capabilities = capabilities,
         cmd = {
           install_root_dir
             .. "/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
           "--stdio",
         },
-        capabilities = capabilities,
       },
       tsserver = {
         cmd = {
