@@ -27,9 +27,6 @@ keymap("n", "<C-c>", "<ESC>", opts)
 -- delete buffer
 keymap("n", "wq", ":Bdelete<cr>", opts)
 
--- toggle_term
-keymap("n", "<C-[>", ":ToggleTerm direction=horizontal size=10<cr>", opts)
-
 -- window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -43,7 +40,8 @@ keymap("n", "<M-l>", ":vertical resize -2<CR>", opts)
 keymap("n", "<M-h>", ":vertical resize +2<CR>", opts)
 
 -- nvim tree toggle
-keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<M-n>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "q", ":NvimTreeClose<CR>", opts)
 
 -- navigate buffer
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -83,7 +81,7 @@ keymap("n", "<S-r>", ":noh<cr>", opts)
 keymap("n", "<C-x>", "<cmd>TroubleToggle<CR>", opts)
 
 -- undotree
-keymap("n", "<M-t>", ":UndotreeToggle<CR>", opts)
+keymap("n", "<C-t>", ":UndotreeToggle<CR>", opts)
 
 -- markdown-preview
 keymap("n", "<M-o>", ":InstantMarkdownPreview<CR>", opts)
