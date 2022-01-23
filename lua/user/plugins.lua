@@ -49,6 +49,12 @@ packer.init {
   },
 }
 
+-- this is bug when using ftdetect from json to jsonc
+-- if autocmd load after plugins startup we must open file jsonc first
+-- but if we reattach from filetype json to jsonc commenters will be broken
+-- this is the solution where i founded, before treesitter / lspconfig fix this
+vim.cmd [[autocmd BufNewFile,BufRead tsconfig*.json setlocal filetype=jsonc]]
+
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins
@@ -62,7 +68,6 @@ return packer.startup(function(use)
   use "folke/trouble.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
   use { "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } }
-  use "b0o/SchemaStore.nvim"
 
   -- Git
   use "kdheepak/lazygit.nvim"
