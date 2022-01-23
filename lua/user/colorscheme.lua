@@ -1,3 +1,11 @@
+vim.cmd [[
+    if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+    endif
+]]
+
 -- TOKYONIGHT
 vim.g.tokyonight_terminal_colors = "xterm-256color"
 vim.g.tokyonight_italic_comments = true -- default
@@ -29,37 +37,58 @@ vim.g.nightflyUndercurls = 1
 vim.g.nightflyUnderlineMatchParen = 1
 vim.g.nightflyVertSplits = 1
 
+-- KANAGAWA
 local kaganagawa_available, kanagawa = pcall(require, "kanagawa")
 if not kaganagawa_available then
-	return
+  return
 end
 
-local notif = require("notify")
+local notif = require "notify"
 
-kanagawa.setup({
-	undercurl = true, -- enable undercurls
-	commentStyle = "italic",
-	functionstyle = "none",
-	keywordStyle = "italic",
-	statementstyle = "none",
-	typestyle = "none",
-	variablebuiltinstyle = "italic",
-	specialreturn = true, -- special highlight for the return keyword
-	specialexception = true, -- special highlight for exception handling keywords
-	transparent = true, -- do not set background color
-	diminactive = false,
-	colors = {},
-	overrider = {},
-})
+kanagawa.setup {
+  undercurl = true, -- enable undercurls
+  commentStyle = "italic",
+  functionstyle = "none",
+  keywordStyle = "italic",
+  statementstyle = "none",
+  typestyle = "none",
+  variablebuiltinstyle = "italic",
+  specialreturn = true, -- special highlight for the return keyword
+  specialexception = true, -- special highlight for exception handling keywords
+  transparent = true, -- do not set background color
+  diminactive = false,
+  colors = {},
+  overrider = {},
+}
 
--- opts | tokyonight -- kanagawa -- dracula -- nightfly
-local colorscheme = "kanagawa"
+-- GRUVBOX_MATERIAL
+vim.g.gruvbox_material_background = "soft"
+vim.g.gruvbox_materual_enable_italic = 1
+vim.g.gruvbox_material_disable_italic_comment = 1
+vim.g.gruvbox_material_enable_bold = 0
+vim.g.gruvbox_material_cursor = "auto"
+vim.g.gruvbox_material_current_word = "grey background"
+vim.g.gruvbox_material_transparent_background = 1
+vim.g.gruvbox_material_visual = "grey background"
+vim.g.gruvbox_materual_menu_selection_background = "grey"
+vim.g.gruvbox_material_sign_column_background = "default"
+vim.g.gruvbox_material_spell_foreground = "colored"
+vim.g.gruvbox_material_ui_contrast = "low"
+vim.g.gruvbox_material_diagnostic_text_highlight = 1
+vim.g.gruvbox_material_diagnostic_line_highlight = 1
+vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+vim.g.gruvbox_material_statusline_style = "original"
+vim.g.gruvbox_material_palette = "original"
+vim.g.gruvbox_material_better_performance = 1
+
+-- opts | tokyonight -- kanagawa -- dracula -- nightfly -- gruvbox-material -- catppuccin
+local colorscheme = "gruvbox-material"
 
 local colorscheme_available, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 if not colorscheme_available then
-	local info = "\nReturn back to kanagawa colorscheme"
-	notif("Colorscheme " .. colorscheme .. " Not found!" .. info, "error")
+  local info = "\nReturn back to kanagawa colorscheme"
+  notif("Colorscheme " .. colorscheme .. " Not found!" .. info, "error")
 
-	return vim.cmd("colorscheme " .. "kanagawa")
+  return vim.cmd("colorscheme " .. "gruvbox-material")
 end
