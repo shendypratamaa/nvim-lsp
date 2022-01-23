@@ -104,7 +104,7 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("f", "📦 ➡️ Find Files", ":Telescope find_files <cr>"),
+    button("f", "💻 ➡️ Telescope Project", ":Telescope project<cr>"),
     button("e", "📖 ➡️ New Files", ":ene <BAR> startinsert <cr>"),
     button("r", "🔖 ➡️ Recently Files", ":Telescope oldfiles <cr>"),
     button("t", "🔭 ➡️ Find Text", ":Telescope live_grep <cr>"),
