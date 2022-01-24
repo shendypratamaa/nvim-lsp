@@ -121,6 +121,7 @@ local keybinds = {
     s = { "<cmd>Telescope git_status<cr>", "Open Change File" },
     r = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
     o = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
+    d = { "<cmd>TodoTelescope<cr>", "Find Todo" },
   },
   X = {
     name = "+TROUBLE 🚑",

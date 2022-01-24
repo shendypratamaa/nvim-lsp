@@ -54,6 +54,7 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "FD", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
   keymap(bufnr, "n", "FH", "<cmd>lua require('user.telescope').unicorns_bookmarks()<CR>", opts)
   keymap(bufnr, "n", "FJ", "<cmd>Telescope packer<CR>", opts)
+  keymap(bufnr, "n", "FK", "<cmd>:TodoTelescope<CR>", opts)
 
   -- LspKeymap
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -144,7 +145,7 @@ M.setup = function()
         virtual_text_icon = true,
       },
       format_on_save = false,
-      disable_format_cap = { "tsserver", "stylelint_lsp", "sumneko_lua", "jsonls" },
+      disable_format_cap = { "tsserver", "stylelint_lsp", "sumneko_lua", "jsonls", "pyright" },
       disable_lsp = { "tailwindcss", "flow" },
       code_lens = false,
       disply_diagnostic_qf = true,
@@ -215,9 +216,6 @@ M.setup = function()
         settings = {
           python = {
             analysis = {
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace",
               typeCheckingMode = "off",
             },
           },
@@ -230,6 +228,7 @@ M.setup = function()
             .. "/tailwindcss_npm/node_modules/@tailwindcss/language-server/bin/tailwindcss-language-server",
           "--stdio",
         },
+        capabilities = capabilities,
       },
       html = {
         cmd = {
@@ -237,12 +236,14 @@ M.setup = function()
             .. "/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server",
           "--stdio",
         },
+        capabilities = capabilities,
       },
       emmet_ls = {
         cmd = {
           install_root_dir .. "/emmet_ls/node_modules/emmet-ls/out/server.js",
           "--stdio",
         },
+        capabilities = capabilities,
       },
       cssls = {
         cmd = {
@@ -250,12 +251,20 @@ M.setup = function()
             .. "/cssls/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server",
           "--stdio",
         },
+        capabilities = capabilities,
       },
       vimls = {
         cmd = {
           install_root_dir .. "/vim/node_modules/vim-language-server/bin/index.js",
           "--stdio",
         },
+      },
+      gopls = {
+        cmd = {
+          install_root_dir .. "/go/gopls",
+          "--stdio",
+        },
+        capabilities = capabilities,
       },
       servers = {
         "tsserver",
@@ -268,6 +277,7 @@ M.setup = function()
         "tailwindcss",
         "cssls",
         "pyright",
+        "gopls",
       },
     },
     lsp_installer = true,
@@ -277,7 +287,7 @@ M.setup = function()
       code_lens_action_icon = "👓",
       diagnostic_head = "😷",
       diagnostic_err = "📛",
-      diagnostic_warn = "🤒",
+      diagnostic_warn = "👎",
       diagnostic_info = [[👩]],
       diagnostic_hint = [[💁]],
       diagnostic_head_severity_1 = "👾 ",

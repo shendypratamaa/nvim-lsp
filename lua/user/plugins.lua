@@ -148,6 +148,7 @@ return packer.startup(function(use)
   use "folke/twilight.nvim"
   use "folke/zen-mode.nvim"
   use "rcarriga/nvim-notify"
+  use "folke/todo-comments.nvim"
 
   -- notes-takingapp
   use "nvim-neorg/neorg"

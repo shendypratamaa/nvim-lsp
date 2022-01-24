@@ -42,6 +42,7 @@ treesitter.setup {
     "c",
     "markdown",
     "norg",
+    "comment",
   },
   ignore_install = {},
   autopairs = {

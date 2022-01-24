@@ -108,7 +108,7 @@ local buttons = {
     button("e", "📖 ➡️ New Files", ":ene <BAR> startinsert <cr>"),
     button("r", "🔖 ➡️ Recently Files", ":Telescope oldfiles <cr>"),
     button("t", "🔭 ➡️ Find Text", ":Telescope live_grep <cr>"),
-    button("w", "🧛 ➡️ Open Notes", ":e ~/.notes<cr>"),
+    button("w", "🧛 ➡️ Open Notes", ":e ~/.notes/neovim-dev.norg<cr>"),
     button("n", "🤖 ➡️ Configuration Neovim", ":e ~/.config/nvim/init.lua<cr>"),
     button("a", "🌈 ➡️ Configuration Alacritty", ":e ~/.config/alacritty/alacritty.yml<cr>"),
     button("z", "🪐 ➡️ Configuration Zshell", ":e ~/.zshrc<cr>"),
