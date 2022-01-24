@@ -94,8 +94,8 @@ local filePath = {
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = "auto", -- dracula-nvim, tokyonight, nightfly, kanagawa, gruvbox-material
-    component_separators = { left = "", right = "" },
+    theme = "auto", -- dracula-nvim, tokyonight, nightfly, kanagawa, gruvbox-material, catppuccin
+    component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = true,
@@ -104,7 +104,7 @@ lualine.setup {
     lualine_a = { mode },
     lualine_b = { branch },
     lualine_c = { filePath, gps_result },
-    lualine_x = { diagnostics, diff, "encoding", filetype },
+    lualine_x = { diagnostics, diff, filetype, "encoding" },
     lualine_y = { location },
     lualine_z = { progress },
   },

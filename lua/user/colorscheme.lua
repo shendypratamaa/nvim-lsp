@@ -3,9 +3,10 @@ vim.cmd [[
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
-    endif
+   endif
 ]]
 
+-- ISSUE: transparent for floating window not work
 -- TOKYONIGHT
 vim.g.tokyonight_terminal_colors = "xterm-256color"
 vim.g.tokyonight_italic_comments = true -- default
@@ -16,8 +17,8 @@ vim.g.tokyonight_transparent = true
 vim.g.tokyonight_hide_inactive_statusline = true
 vim.g.tokyonight_sidebar = {}
 vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_dark_sidebar = true
-vim.g.tokyonight_dark_float = true
+vim.g.tokyonight_dark_sidebar = false
+vim.g.tokyonight_dark_float = false
 vim.g.tokyonight_colors = {}
 vim.g.tokyonight_lualine_bold = true
 
@@ -37,6 +38,7 @@ vim.g.nightflyUndercurls = 1
 vim.g.nightflyUnderlineMatchParen = 1
 vim.g.nightflyVertSplits = 1
 
+-- NOTE: floating window from navigator highlighting weird, red color dominated functionName()
 -- KANAGAWA
 local kaganagawa_available, kanagawa = pcall(require, "kanagawa")
 if not kaganagawa_available then
@@ -78,7 +80,7 @@ vim.g.gruvbox_material_diagnostic_text_highlight = 1
 vim.g.gruvbox_material_diagnostic_line_highlight = 1
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.g.gruvbox_material_statusline_style = "original"
-vim.g.gruvbox_material_palette = "original"
+vim.g.gruvbox_material_palette = "mix"
 vim.g.gruvbox_material_better_performance = 1
 
 -- opts | tokyonight -- kanagawa -- dracula -- nightfly -- gruvbox-material -- catppuccin
