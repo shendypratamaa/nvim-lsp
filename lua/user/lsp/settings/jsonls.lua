@@ -4,6 +4,8 @@ local schemas = {
     fileMatch = {
       "tsconfig.json",
       "tsconfig.*.json",
+      "jsconfig.json",
+      "jsconfig.*.json",
     },
     url = "https://json.schemastore.org/tsconfig.json",
   },
