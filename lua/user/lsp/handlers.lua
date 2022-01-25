@@ -51,10 +51,10 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "<C-n>", "<cmd>lua require('user.telescope').unicorns_search()<CR>", opts)
   keymap(bufnr, "n", "FE", "<cmd>lua require('user.telescope').unicorns_buffers()<CR>", opts)
   keymap(bufnr, "n", "FU", "<cmd>lua require('user.telescope').unicorns_browser()<CR>", opts)
-  keymap(bufnr, "n", "FD", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
+  keymap(bufnr, "n", "FN", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
+
   keymap(bufnr, "n", "FH", "<cmd>lua require('user.telescope').unicorns_bookmarks()<CR>", opts)
   keymap(bufnr, "n", "FJ", "<cmd>Telescope packer<CR>", opts)
-  keymap(bufnr, "n", "FK", "<cmd>:TodoTelescope<CR>", opts)
 
   -- LspKeymap
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -97,20 +97,24 @@ M.setup = function()
       { key = "gA", mode = "v", func = "range_code_action()" },
       { key = "RR", func = "require('navigator.rename').rename()" },
       { mode = "i", key = "<C-k>", func = "signature_help()" },
-      { key = "gk", func = "signature_help()" },
+      { key = "gK", func = "signature_help()" },
       { key = "gD", func = "declaration({ border = 'rounded', max_width = 80 })" },
       { key = "K", func = "hover({ popup_opts = { border = single, max_width = 80 }})" },
       { key = "GJ", func = "require('navigator.definition').definition_preview()" },
       { key = "gi", func = "incoming_calls()" },
       { key = "gO", func = "outgoing_calls()" },
-      { key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
       { key = "]d", func = "require('navigator.treesitter').goto_next_usage()" },
       { key = "[d", func = "require('navigator.treesitter').goto_previous_usage()" },
       { key = "[g", func = "require('navigator.dochighlight').hi_symbol()" },
-      { key = "le", mode = "n", func = "require('navigator.codelens').run_action()" },
+      { key = "ge", mode = "n", func = "require('navigator.codelens').run_action()" },
       { key = "gl", func = "require('navigator.diagnostics').show_diagnostics()" },
+
+      -- ISSUE: this is not working properly
       -- { key = "GR", func = "require('navigator.reference').async_ref()" }, -- err
       -- { key = "g[", func = "type_definition()" }, -- err
+      -- { key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+
+      -- NOTE: add / remove / list not much used in my case for now
       -- { key = "<Space>wa", func = "require('navigator.workspace').add_workspace_folder()" },
       -- { key = "<Space>wr", func = "require('navigator.workspace').remove_workspace_folder()" },
       -- { key = "<Space>ff", func = "formatting()", mode = "n" },
@@ -131,11 +135,11 @@ M.setup = function()
     transparency = 100,
     lsp = {
       code_action = {
-        enable = false,
-        sign = true,
+        enable = true,
+        sign = false,
         sign_priority = 40,
         virtual_text = false,
-        virtual_text_icon = true,
+        virtual_text_icon = false,
       },
       code_lens_action = {
         enable = true,
