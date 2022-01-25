@@ -54,7 +54,6 @@ local with_preview = {
 M.unicorns_search = function()
   local opts = vim.deepcopy(no_preview)
   opts.prompt_title = "< 🦄 Find Files >"
-  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
   telescope_builtin.find_files(opts)
 end
 
@@ -67,8 +66,6 @@ end
 M.unicorns_browser = function()
   local opts = vim.deepcopy(no_preview)
   opts.prompt_title = "< 🦄 File Browse >"
-  opts.path_display = "smart"
-  opts.cwd = "~"
   telescope.extensions.file_browser.file_browser(opts)
 end
 
@@ -87,7 +84,6 @@ M.unicorns_project = function()
 
   opts.prompt_title = "< 🦄 Project Directory >"
   opts.display_type = "full"
-
   telescope.extensions.project.project(opts)
 end
 
@@ -106,6 +102,7 @@ end
 
 telescope.setup {
   defaults = {
+    file_ignore_patterns = { "node%_modules/.*" },
     buffer_previewer_maker = new_maker,
     prompt_prefix = "🔭 ",
     selection_caret = "🚀 ",
@@ -192,9 +189,6 @@ telescope.setup {
       layout_config = {
         height = 0.5,
       },
-    },
-    file_browser = {
-      theme = "dropdown",
     },
   },
 }
