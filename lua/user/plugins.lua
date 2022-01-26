@@ -118,6 +118,10 @@ return packer.startup(function(use)
   use "xiyaowong/telescope-emoji.nvim"
   use "nvim-telescope/telescope-packer.nvim"
   use "dhruvmanila/telescope-bookmarks.nvim"
+  use "ThePrimeagen/harpoon"
+
+  -- telescope utils extended
+  use "airblade/vim-rooter"
 
   -- Colorscheme
   use "folke/tokyonight.nvim"
