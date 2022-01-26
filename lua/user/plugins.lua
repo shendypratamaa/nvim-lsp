@@ -109,6 +109,7 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim"
   use "shendypratamaa/nvim-ts-rainbow"
   use "SmiteshP/nvim-gps"
+  use "nvim-treesitter/playground"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
