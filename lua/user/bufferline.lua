@@ -6,9 +6,7 @@ end
 
 buff.setup {
   options = {
-    numbers = function(opts)
-      return string.format("%s|%s", opts.lower(opts.id), opts.raise(opts.ordinal))
-    end,
+    numbers = "buffer_id",
     numbers_style = "subscript",
     close_command = "Bdelete! %d",
     right_mouse_command = "Bdelete! %d",
@@ -40,7 +38,7 @@ buff.setup {
     max_name_length = 18,
     max_prefix_length = 15,
     tab_size = 18,
-    diagnostics = "",
+    diagnostics = false,
     diagnostics_update_in_insert = true,
     -- custom_filter = function(buf_number, buf_numbers)
     --   -- filter out filetypes you don't want to see
@@ -68,7 +66,8 @@ buff.setup {
     persist_buffer_sort = true,
     enforce_regular_tabs = true,
     always_show_bufferline = true,
-    separator_style = { " ", " " },
+    -- separator_style = { "  ", "  " },
+    separator_style = "thin",
     sort_by = "id",
   },
 }
