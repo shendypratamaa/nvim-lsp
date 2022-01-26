@@ -82,6 +82,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
   use "nvim-lua/plenary.nvim"
   use "tpope/vim-surround"
+  use "b0o/SchemaStore.nvim"
 
   -- Cmp completion
   use "hrsh7th/nvim-cmp"
