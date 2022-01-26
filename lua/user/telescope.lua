@@ -46,14 +46,16 @@ local with_preview = {
   results_title = false,
   preview_title = false,
   layout_config = {
-    width = 0.6,
-    preview_width = 0.65,
+    width = 0.7,
+    preview_width = 0.5,
   },
 }
 
 M.unicorns_search = function()
   local opts = vim.deepcopy(no_preview)
+
   opts.prompt_title = "< 🦄 Find Files >"
+  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
   telescope_builtin.find_files(opts)
 end
 
@@ -66,24 +68,23 @@ end
 M.unicorns_browser = function()
   local opts = vim.deepcopy(no_preview)
   opts.prompt_title = "< 🦄 File Browse >"
+  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
   telescope.extensions.file_browser.file_browser(opts)
 end
 
 M.unicorns_project = function()
-  local opts = telescope_themes.get_dropdown {
-    layout_config = {
-      width = 0.5,
-      height = 0.4,
-    },
-  }
+  local opts = {}
 
-  opts.mappings = {
-    n = {},
-    i = {},
+  opts.layout_strategy = "center"
+
+  opts.layout_config = {
+    height = 0.5,
+    width = 0.5,
+    prompt_position = "bottom",
   }
 
   opts.prompt_title = "< 🦄 Project Directory >"
-  opts.display_type = "full"
+  opts.display_type = "minimal"
   telescope.extensions.project.project(opts)
 end
 
@@ -125,6 +126,7 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
 
         ["<C-c>"] = actions.close,
+        ["<S-c>"] = actions.close,
 
         ["<Down>"] = actions.move_selection_next,
         ["<Up>"] = actions.move_selection_previous,
@@ -146,6 +148,8 @@ telescope.setup {
 
       n = {
         ["<C-c>"] = actions.close,
+        ["q"] = actions.close,
+
         ["<CR>"] = actions.select_default,
 
         ["<C-x>"] = actions.select_horizontal,
@@ -200,5 +204,6 @@ telescope.load_extension "emoji"
 telescope.load_extension "notify"
 telescope.load_extension "packer"
 telescope.load_extension "bookmarks"
+telescope.load_extension "harpoon"
 
 return M
