@@ -1,7 +1,7 @@
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_highlight_opened_files = 1
+vim.g.nvim_tree_git_hl = 0
+vim.g.nvim_tree_highlight_opened_files = 0
 vim.g.nvim_tree_root_folder_modifier = ":t"
 vim.g.nvim_tree_add_trailing = 1
 vim.g.nvim_tree_group_empty = 1
@@ -106,7 +106,7 @@ nvimtree.setup {
     side = "left",
     auto_resize = true,
     mappings = {
-      custom_only = false,
+      custom_only = true,
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
@@ -122,7 +122,6 @@ nvimtree.setup {
         { key = ">", action = "next_sibling" },
         { key = "P", action = "parent_node" },
         { key = "<BS>", action = "close_node" },
-        { key = "<Tab>", action = "preview" },
         { key = "K", action = "first_sibling" },
         { key = "J", action = "last_sibling" },
         { key = "I", action = "toggle_ignored" },
