@@ -6,7 +6,7 @@ local path = require "nvim-lsp-installer.path"
 local install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" }
 
 local custom_signature = require "user.lsp.lsp-signature"
-local jsonschemas = require "user.lsp.settings.jsonls"
+-- local jsonschemas = require "user.lsp.settings.jsonls"
 
 if not status_ok and status_cmp and status_notify then
   notification(status_ok or status_cmp or status_notify .. "not loaded !", "error")
@@ -24,11 +24,11 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
 
-        hi default GHTextViewDark guifg=#DCD7BA guibg=#3c3836
-        hi default GHListDark guifg=#C8C093 guibg=#504945
-        hi default GHListHl guifg=#C8C093 guibg=#32302f
-        hi NormalFloat guibg=#32302f
-        hi FloatBorder guibg=#32302f
+        hi default GHTextViewDark guifg=#DCD7BA guibg=#262727
+        hi default GHListDark guifg=#C8C093 guibg=#262727
+        hi default GHListHl guifg=#1F1F28 guibg=#C8C093
+        hi NormalFloat guibg=#262727
+        hi FloatBorder guibg=#262727
       augroup END
      ]],
       false
@@ -47,14 +47,12 @@ local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
 
-  -- Telescope
-  keymap(bufnr, "n", "<C-n>", "<cmd>lua require('user.telescope').unicorns_search()<CR>", opts)
+  -- harpoon || telescope
+  keymap(bufnr, "n", "FK", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+  keymap(bufnr, "n", "FJ", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+  keymap(bufnr, "n", "]c", "<cmd>lua require('harpoon.ui').nav_next()<CR>", opts)
+  keymap(bufnr, "n", "[c", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", opts)
   keymap(bufnr, "n", "FE", "<cmd>lua require('user.telescope').unicorns_buffers()<CR>", opts)
-  keymap(bufnr, "n", "FU", "<cmd>lua require('user.telescope').unicorns_browser()<CR>", opts)
-  keymap(bufnr, "n", "FN", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
-
-  keymap(bufnr, "n", "FH", "<cmd>lua require('user.telescope').unicorns_bookmarks()<CR>", opts)
-  keymap(bufnr, "n", "FJ", "<cmd>Telescope packer<CR>", opts)
 
   -- LspKeymap
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -160,7 +158,7 @@ M.setup = function()
       jsonls = {
         settings = {
           json = {
-            schemas = jsonschemas,
+            schemas = require("schemastore").json.schemas(),
           },
         },
         filetypes = { "jsonc", "json" },
