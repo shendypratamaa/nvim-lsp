@@ -80,6 +80,10 @@ keymap("n", "FS", "<cmd>lua require('user.telescope').unicorns_grep()<CR>", opts
 keymap("n", "FN", "<cmd>lua require('user.telescope').unicorns_browser()<CR>", opts)
 keymap("n", "FP", "<cmd>Telescope packer<CR>", opts)
 
+-- todo notes
+keymap("n", "qq", "<cmd>TroubleClose<cr>", opts)
+keymap("n", "tj", "<cmd>TodoTrouble<cr>", opts)
+
 -- remove history seach text
 keymap("n", "<S-r>", ":noh<cr>", opts)
 
@@ -91,8 +95,6 @@ keymap("n", "<M-o>", ":InstantMarkdownPreview<CR>", opts)
 
 -- FIX weird thing
 keymap("n", "mm", "zz", opts)
--- keymap("n", "q", "<cmd>TroubleToggle<cr>", opts)
-keymap("n", "tj", ":TodoTrouble<cr>", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 keymap("n", "J", "mzJ`z", opts)
