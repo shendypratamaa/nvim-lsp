@@ -104,7 +104,11 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("f", "💻 ➡️ Telescope Project", ":Telescope project<cr>"),
+    button(
+      "f",
+      "💻 ➡️ Find Files",
+      "<cmd>lua require('user.telescope').unicorns_search()<cr>"
+    ),
     button("e", "📖 ➡️ New Files", ":ene <BAR> startinsert <cr>"),
     button("r", "🔖 ➡️ Recently Files", ":Telescope oldfiles <cr>"),
     button("t", "🔭 ➡️ Find Text", ":Telescope live_grep <cr>"),
