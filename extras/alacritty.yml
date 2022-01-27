@@ -2,81 +2,179 @@ env:
   TERM: xterm-256color
 
 transparent_background_colors: true
-background_opacity: .9
+background_opacity: .95
 
-# TokyoNight Alacritty Colors
-colors:
-  # Default colors
-  primary:
-    # background: '0x1a1b26'
-    background: '#011627'
-    foreground: '0xc0caf5'
-
-  # Normal colors
-  normal:
-    black: '0x15161E'
-    red: '0xf7768e'
-    green: '0x9ece6a'
-    yellow: '0xe0af68'
-    blue: '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan: '0x7dcfff'
-    white: '0xa9b1d6'
-
-  # Bright colors
-  bright:
-    black: '0x414868'
-    red: '0xf7768e'
-    green: '0x9ece6a'
-    yellow: '0xe0af68'
-    blue: '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan: '0x7dcfff'
-    white: '0xc0caf5'
-
-  indexed_colors:
-    - { index: 16, color: '0xff9e64' }
-    - { index: 17, color: '0xdb4b4b' }
-
-# NIGHTFLY
+# Kanagawa Alacritty Colors
 # colors:
-#   # Default colors
 #   primary:
-#     background: '#011627'
-#     foreground: '#acb4c2'
-#     bright_foreground: '#eeeeee'
+#     background: '0x1f1f28'
+#     foreground: '0xdcd7ba'
 #
-#   # Cursor colors
-#   cursor:
-#     text: '#080808'
-#     cursor: '#9ca1aa'
-#
-#   # Selection colors
-#   selection:
-#    text: '#080808'
-#     background: '#b2ceee'
-#
-#   # Normal colors
 #   normal:
-#     black: '#1d3b53'
-#     red: '#fc514e'
-#     green: '#a1cd5e'
-#     yellow: '#e3d18a'
-#     blue: '#82aaff'
-#     magenta: '#c792ea'
-#     cyan: '#7fdbca'
-#     white: '#a1aab8'
+#     black: '0x090618'
+#     red: '0xc34043'
+#     green: '0x76946a'
+#     yellow: '0xc0a36e'
+#     blue: '0x7e9cd8'
+#     magenta: '0x957fb8'
+#     cyan: '0x6a9589'
+#     white: '0xc8c093'
 #
-#   # Bright colors
 #   bright:
-#     black: '#7c8f8f'
-#     red: '#ff5874'
-#     green: '#21c7a8'
-#     yellow: '#ecc48d'
-#     blue: '#82aaff'
-#     magenta: '#ae81ff'
-#     white: '#d6deeb'
-#     cyan: '#7fdbca'
+#     black: '0x727169'
+#     red: '0xe82424'
+#     green: '0x98bb6c'
+#     yellow: '0xe6c384'
+#     blue: '0x7fb4ca'
+#     magenta: '0x938aa9'
+#     cyan: '0x7aa89f'
+#     white: '0xdcd7ba'
+#
+#   selection:
+#     background: '0x2d4f67'
+#     foreground: '0xc8c093'
+#
+#   indexed_colors:
+#     - { index: 16, color: '0xffa066' }
+#     - { index: 17, color: '0xff5d62' }
+
+# Gruvbox - material
+schemes:
+  gruvbox_material_hard_dark: &gruvbox_material_hard_dark
+    primary:
+      background: '0x1d2021'
+      foreground: '0xd4be98'
+    normal:
+      black: '0x32302f'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+    bright:
+      black: '0x32302f'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+  gruvbox_material_medium_dark: &gruvbox_material_medium_dark
+    primary:
+      background: '0x282828'
+      foreground: '0xd4be98'
+    normal:
+      black: '0x3c3836'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+    bright:
+      black: '0x3c3836'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+  gruvbox_material_soft_dark: &gruvbox_material_soft_dark
+    primary:
+      background: '0x32302f'
+      foreground: '0xd4be98'
+    normal:
+      black: '0x45403d'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+    bright:
+      black: '0x45403d'
+      red: '0xea6962'
+      green: '0xa9b665'
+      yellow: '0xd8a657'
+      blue: '0x7daea3'
+      magenta: '0xd3869b'
+      cyan: '0x89b482'
+      white: '0xd4be98'
+  gruvbox_material_hard_light: &gruvbox_material_hard_light
+    primary:
+      background: '0xf9f5d7'
+      foreground: '0x654735'
+    normal:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xf2e5bc'
+    bright:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xf2e5bc'
+  gruvbox_material_medium_light: &gruvbox_material_medium_light
+    primary:
+      background: '0xfbf1c7'
+      foreground: '0x654735'
+    normal:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xeee0b7'
+    bright:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xeee0b7'
+  gruvbox_material_soft_light: &gruvbox_material_soft_light
+    primary:
+      background: '0xf2e5bc'
+      foreground: '0x654735'
+    normal:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xe6d5ae'
+    bright:
+      black: '0x654735'
+      red: '0xc14a4a'
+      green: '0x6c782e'
+      yellow: '0xb47109'
+      blue: '0x45707a'
+      magenta: '0x945e80'
+      cyan: '0x4c7a5d'
+      white: '0xe6d5ae'
+
+# Apply the color scheme.
+colors: *gruvbox_material_hard_dark
 
 font:
   normal:
@@ -121,6 +219,14 @@ scrolling:
   history: 10000
   multiplier: 1
 
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+    vi_mode_style: Block
+    blink_interval: 750
+    unfocused_hollow: true
+
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
@@ -140,9 +246,8 @@ key_bindings:
   # - { key: I, mods: Alt, chars: "\x1bi" }
   - { key: T, mods: Alt, chars: "\x1bt" }
   - { key: P, mods: Alt, chars: "\x1bp" }
-  - { key: V, mods: Alt, chars: "\x1bv" }
   - { key: J, mods: Alt, chars: "\x1bj" }
-  - { key: K, mods: Alt, chars: "\x1bk" }
+  - { key: N, mods: Alt, chars: "\x1bn" }
 
   # - { key: Tab, mods: Shift, chars: "^[[Z" }
   # - { key: Tab, mods: Shift, chars: "\x1b\x5b\x5a" }
