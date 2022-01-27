@@ -12,9 +12,11 @@ local options = {
   cmdheight = 1, -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
-  hlsearch = true, -- highlight all matches on previous search pattern
+  hlsearch = true,
+  incsearch = true,
   mouse = "a", -- allow the mouse to be used in neovim
   pumheight = 10, -- pop up menu height
+  splitright = true,
   splitbelow = true, -- force all horizontal splits to go below current window
   swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
@@ -37,6 +39,7 @@ local options = {
   colorcolumn = "100",
   sidescrolloff = 8,
   guifont = "monospace:h17",
+  guicursor = "",
 }
 
 vim.opt.shortmess:append "c"
@@ -45,6 +48,10 @@ vim.g.cursorhold_updatetime = 100
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.cmd [[
+  let g:rooter_patterns = ['.git', 'package.json', '!node_modules']
+]]
 
 vim.cmd [[
   augroup numbertoggle
@@ -79,6 +86,14 @@ vim.cmd [[
     autocmd!
     autocmd BufWinLeave *.* mkview
     autocmd BufWinEnter *.* silent! loadview
+  augroup END
+]]
+
+vim.cmd [[
+  augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
   augroup END
 ]]
 
