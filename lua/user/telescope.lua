@@ -5,7 +5,6 @@ end
 
 local actions = require "telescope.actions"
 local telescope_builtin = require "telescope.builtin"
-local telescope_themes = require "telescope.themes"
 
 local previewers = require "telescope.previewers"
 local Job = require "plenary.job"
@@ -36,11 +35,11 @@ M.unicorns_search = function()
   opts.layout_strategy = "horizontal"
   opts.layout_config = {
     horizontal = {
-      preview_title = 40,
-      preview_width = 60,
+      preview_title = 30,
+      preview_width = 100,
     },
-    height = 0.5,
-    width = 0.5,
+    height = 0.7,
+    width = 0.7,
   }
   opts.prompt_title = "< 🦄 Find Files >"
   opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
@@ -52,11 +51,11 @@ M.unicorns_buffers = function()
   opts.layout_strategy = "horizontal"
   opts.layout_config = {
     horizontal = {
-      preview_title = 40,
-      preview_width = 60,
+      preview_title = 30,
+      preview_width = 100,
     },
-    height = 0.5,
-    width = 0.5,
+    height = 0.7,
+    width = 0.7,
   }
   opts.prompt_title = "< 🦄 Find Buffers >"
   telescope_builtin.buffers(opts)
@@ -68,10 +67,10 @@ M.unicorns_browser = function()
   opts.layout_config = {
     horizontal = {
       preview_title = 30,
-      preview_width = 70,
+      preview_width = 90,
     },
-    height = 0.5,
-    width = 0.5,
+    height = 0.7,
+    width = 0.7,
   }
   opts.prompt_title = "< 🦄 File Browse >"
   opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
@@ -85,11 +84,11 @@ M.unicorns_grep = function()
   opts.layout_strategy = "horizontal"
   opts.layout_config = {
     horizontal = {
-      preview_width = 40,
-      preview_title = 60,
+      preview_title = 30,
+      preview_width = 90,
     },
-    height = 0.5,
-    width = 0.5,
+    height = 0.7,
+    width = 0.7,
     prompt_position = "bottom",
   }
   telescope_builtin.live_grep(opts)
@@ -109,11 +108,16 @@ M.unicorns_project = function()
 end
 
 M.unicorns_bookmarks = function()
-  local opts = telescope_themes.get_dropdown {
-    layout_config = {
-      width = 0.65,
-      height = 0.4,
+  local opts = {}
+  opts.layout_strategy = "horizontal"
+  opts.layout_config = {
+    horizontal = {
+      preview_title = 30,
+      preview_width = 90,
     },
+    height = 0.7,
+    width = 0.7,
+    prompt_position = "bottom",
   }
   opts.selected_browser = "brave"
   opts.prompt_title = "< 🦄 Bookmarks Browser >"
