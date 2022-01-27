@@ -40,7 +40,7 @@ keymap("n", "<M-l>", ":vertical resize -2<CR>", opts)
 keymap("n", "<M-h>", ":vertical resize +2<CR>", opts)
 
 -- nvim tree toggle
-keymap("n", "<M-n>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "q", ":NvimTreeClose<CR>", opts)
 
 -- navigate buffer
@@ -72,16 +72,27 @@ keymap("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<CR>", opts)
 keymap("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>", opts)
 
 -- telescope
-keymap("n", "<M-p>", ":Telescope<cr>", opts)
+-- keymap("n", "<M-p>", ":Telescope find_files<cr>", opts) -- default find_files layout
+keymap("n", "FF", "<cmd>lua require('user.telescope').unicorns_search()<CR>", opts)
+keymap("n", "FO", "<cmd>lua require('user.telescope').unicorns_project()<CR>", opts)
+keymap("n", "FH", "<cmd>lua require('user.telescope').unicorns_bookmarks()<CR>", opts)
+keymap("n", "FS", "<cmd>lua require('user.telescope').unicorns_grep()<CR>", opts)
+keymap("n", "FN", "<cmd>lua require('user.telescope').unicorns_browser()<CR>", opts)
+keymap("n", "FP", "<cmd>Telescope packer<CR>", opts)
 
 -- remove history seach text
 keymap("n", "<S-r>", ":noh<cr>", opts)
 
--- nvim trouble keymap
-keymap("n", "<C-x>", "<cmd>TroubleToggle<CR>", opts)
-
 -- undotree
-keymap("n", "<C-t>", ":UndotreeToggle<CR>", opts)
+keymap("n", "<C-p>", ":UndotreeToggle<CR>", opts)
 
 -- markdown-preview
 keymap("n", "<M-o>", ":InstantMarkdownPreview<CR>", opts)
+
+-- FIX weird thing
+keymap("n", "mm", "zz", opts)
+-- keymap("n", "q", "<cmd>TroubleToggle<cr>", opts)
+keymap("n", "tj", ":TodoTrouble<cr>", opts)
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+keymap("n", "J", "mzJ`z", opts)
