@@ -5,6 +5,7 @@ end
 
 local actions = require "telescope.actions"
 local telescope_builtin = require "telescope.builtin"
+local telescope_themes = require "telescope.themes"
 
 local previewers = require "telescope.previewers"
 local Job = require "plenary.job"
@@ -30,98 +31,63 @@ end
 
 local M = {}
 
+local preview_themes = {
+  show_line = false,
+  results_title = false,
+  preview_title = false,
+  shorten_path = true,
+  layout_config = {
+    preview_width = 0.5,
+  },
+}
+
+local preview_ivy = telescope_themes.get_ivy {
+  shorten_path = true,
+  layout_config = {
+    height = 0.4,
+  },
+}
+
 M.unicorns_search = function()
-  local opts = {}
-  opts.layout_strategy = "horizontal"
-  opts.layout_config = {
-    horizontal = {
-      preview_title = 30,
-      preview_width = 100,
-    },
-    height = 0.7,
-    width = 0.7,
-  }
+  local opts = vim.deepcopy(preview_themes)
   opts.prompt_title = "< 🦄 Find Files >"
-  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
   telescope_builtin.find_files(opts)
 end
 
 M.unicorns_buffers = function()
-  local opts = {}
-  opts.layout_strategy = "horizontal"
-  opts.layout_config = {
-    horizontal = {
-      preview_title = 30,
-      preview_width = 100,
-    },
-    height = 0.7,
-    width = 0.7,
-  }
+  local opts = vim.deepcopy(preview_themes)
   opts.prompt_title = "< 🦄 Find Buffers >"
   telescope_builtin.buffers(opts)
 end
 
 M.unicorns_browser = function()
-  local opts = {}
-  opts.layout_strategy = "horizontal"
-  opts.layout_config = {
-    horizontal = {
-      preview_title = 30,
-      preview_width = 90,
-    },
-    height = 0.7,
-    width = 0.7,
-  }
+  local opts = vim.deepcopy(preview_ivy)
   opts.prompt_title = "< 🦄 File Browse >"
-  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[2]
   telescope.extensions.file_browser.file_browser(opts)
 end
 
-M.unicorns_grep = function()
-  local opts = {}
-  opts.prompt_title = "< 🦄 Live Grep >"
-  opts.grep_open_files = true
-  opts.layout_strategy = "horizontal"
-  opts.layout_config = {
-    horizontal = {
-      preview_title = 30,
-      preview_width = 90,
-    },
-    height = 0.7,
-    width = 0.7,
-    prompt_position = "bottom",
-  }
-  telescope_builtin.live_grep(opts)
-end
-
-M.unicorns_project = function()
-  local opts = {}
-  opts.layout_strategy = "vertical"
-  opts.layout_config = {
-    height = 0.4,
-    width = 0.4,
-    prompt_position = "bottom",
-  }
-  opts.prompt_title = "< 🦄 Project Directory >"
-  opts.display_type = "full"
-  telescope.extensions.project.project(opts)
-end
-
 M.unicorns_bookmarks = function()
-  local opts = {}
-  opts.layout_strategy = "horizontal"
-  opts.layout_config = {
-    horizontal = {
-      preview_title = 30,
-      preview_width = 90,
-    },
-    height = 0.7,
-    width = 0.7,
-    prompt_position = "bottom",
-  }
+  local opts = vim.deepcopy(preview_ivy)
   opts.selected_browser = "brave"
   opts.prompt_title = "< 🦄 Bookmarks Browser >"
   telescope.extensions.bookmarks.bookmarks(opts)
+end
+
+M.unicorns_project = function()
+  local opts = telescope_themes.get_dropdown {}
+  opts.display_type = "full"
+  opts.prompt_title = "< 🦄 Project Directory >"
+  telescope.extensions.project.project(opts)
+end
+
+M.unicorns_grep = function()
+  local opts = vim.deepcopy(preview_themes)
+  opts.layout_config = {
+    preview_width = 0.4,
+  }
+  opts.prompt_title = "< 🦄 Live Grep >"
+  opts.grep_open_files = true
+  telescope_builtin.live_grep(opts)
 end
 
 telescope.setup {
@@ -201,7 +167,9 @@ telescope.setup {
     },
   },
   pickers = {
-    -- this is for another configuration
+    find_files = {
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+    },
   },
   extensions = {
     fzf = {
