@@ -59,6 +59,8 @@ local function lsp_keymaps(bufnr)
 
   -- LspKeymap
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  keymap(bufnr, "n", "gV", ":vs<CR><cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  keymap(bufnr, "n", "gS", ":sp<CR><cmd>lua vim.lsp.buf.definition()<CR>", opts)
   keymap(bufnr, "n", "<C-m>", "<cmd>IndentBlanklineToggle<CR>", opts)
   keymap(bufnr, "n", "ZZ", "<cmd>lua require('zen-mode').toggle()<CR>", opts)
 
@@ -113,7 +115,9 @@ M.setup = function()
       -- ISSUE: this is not working properly
       -- { key = "GR", func = "require('navigator.reference').async_ref()" }, -- err
       -- { key = "g[", func = "type_definition()" }, -- err
-      -- { key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" }, -- err when press <cr>
+      --
+      -- ISSUE: from guihua utils when press <cr>
+      -- { key = "gK", func = "require('navigator.diagnostics').show_buf_diagnostics()" },
 
       -- NOTE: add / remove / list not much used in my case for now
       -- { key = "<Space>wa", func = "require('navigator.workspace').add_workspace_folder()" },
@@ -316,9 +320,6 @@ M.setup = function()
       treesitter_defult = "🌲",
     },
   }
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
 end
 
 return M
