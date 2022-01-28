@@ -3,10 +3,10 @@ if not status_ok then
   return
 end
 
+-- PERFORMANCE: dont use eslint makin slowest editor ever !
 local formatting = null_ls.builtins.formatting
 local actions = null_ls.builtins.code_actions
-
--- local diagnostics = null_ls.builtins.diagnostics || for now disable bcs showing twice with navigator
+-- local diagnostics = null_ls.builtins.diagnostics
 
 local sources = {
   formatting.stylua,
@@ -35,6 +35,7 @@ local sources = {
   -- diagnostics.stylelint,
   -- diagnostics.flake8,
   -- diagnostics.eslint_d,
+  -- actions.eslint_d,
 }
 
 null_ls.setup {
