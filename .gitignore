@@ -21,3 +21,4 @@ tags
 autoload/*
 .DS_Store
 plugin
+.luarc.json
