@@ -75,21 +75,6 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-    augroup Unicorns_Folding
-      au BufReadPre * setlocal foldmethod=indent
-      au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-    augroup END
-]]
-
-vim.cmd [[
-  augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave *.* mkview
-    autocmd BufWinEnter *.* silent! loadview
-  augroup END
-]]
-
-vim.cmd [[
   augroup vimrc-incsearch-highlight
     autocmd!
     autocmd CmdlineEnter /,\? :set hlsearch
