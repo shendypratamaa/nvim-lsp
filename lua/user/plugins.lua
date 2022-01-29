@@ -146,7 +146,6 @@ return packer.startup(function(use)
   use "petertriho/nvim-scrollbar"
   use "antoinemadec/FixCursorHold.nvim"
   use "nacro90/numb.nvim"
-  use "shendypratamaa/pretty-fold.nvim"
   use "ggandor/lightspeed.nvim"
   use "folke/twilight.nvim"
   use "folke/zen-mode.nvim"
