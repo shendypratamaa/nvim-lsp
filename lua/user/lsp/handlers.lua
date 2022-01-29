@@ -6,7 +6,6 @@ local path = require "nvim-lsp-installer.path"
 local install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" }
 
 local custom_signature = require "user.lsp.lsp-signature"
--- local jsonschemas = require "user.lsp.settings.jsonls"
 
 if not status_ok and status_cmp and status_notify then
   notification(status_ok or status_cmp or status_notify .. "not loaded !", "error")
@@ -154,7 +153,19 @@ M.setup = function()
         virtual_text_icon = true,
       },
       format_on_save = false,
-      disable_format_cap = { "tsserver", "stylelint_lsp", "sumneko_lua", "jsonls", "pyright" },
+      disable_format_cap = {
+        "tsserver",
+        "stylelint_lsp",
+        "sumneko_lua",
+        "jsonls",
+        "pyright",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "gopls",
+        "vimls",
+        "emmet_ls",
+      },
       disable_lsp = { "tailwindcss", "flow" },
       code_lens = false,
       disply_diagnostic_qf = true,
