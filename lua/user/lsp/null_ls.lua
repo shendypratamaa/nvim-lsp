@@ -9,13 +9,17 @@ local actions = null_ls.builtins.code_actions
 -- local diagnostics = null_ls.builtins.diagnostics
 
 local sources = {
-  formatting.stylua,
-  formatting.prettier.with {
+  formatting.stylua.with {
+    extra_args = {
+      "--config-path",
+      vim.fn.expand "~/.config/nvim/linter-config/.stylua.toml",
+    },
+  },
+  formatting.prettierd.with {
+    env = {
+      PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
+    },
     filetypes = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
       "json",
       "jsonc",
       "yaml",
@@ -23,19 +27,14 @@ local sources = {
       "css",
       "html",
     },
-    extra_args = {
-      "--no-semi",
-      "--single-quote",
-      "--jsx-single-quote",
-      "--tsx-single-quote",
-    },
   },
   formatting.black.with { extra_args = { "--fast" } },
+  formatting.eslint_d,
+  actions.eslint_d,
   actions.gitsigns,
   -- diagnostics.stylelint,
   -- diagnostics.flake8,
   -- diagnostics.eslint_d,
-  -- actions.eslint_d,
 }
 
 null_ls.setup {
