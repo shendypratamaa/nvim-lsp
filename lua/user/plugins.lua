@@ -98,10 +98,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
-  use {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    commit = "c81382328ad47c154261d1528d7c921acad5eae5",
-  }
+  use "nvim-treesitter/nvim-treesitter-textobjects"
   use "RRethy/nvim-treesitter-textsubjects"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter-refactor"
