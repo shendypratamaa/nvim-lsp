@@ -44,6 +44,8 @@ treesitter.setup {
     "norg",
     "comment",
     "query",
+    "scss",
+    "toml",
   },
   playground = {
     enable = true,
