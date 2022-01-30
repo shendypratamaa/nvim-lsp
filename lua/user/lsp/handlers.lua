@@ -166,7 +166,7 @@ M.setup = function()
         "vimls",
         "emmet_ls",
       },
-      disable_lsp = { "tailwindcss", "flow" },
+      disable_lsp = { "tailwindcss", "flow", "cssls", "emmet_ls" },
       code_lens = false,
       disply_diagnostic_qf = true,
       diagnostic_load_files = false,
