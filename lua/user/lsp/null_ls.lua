@@ -26,30 +26,18 @@ local sources = {
       "toml",
       "markdown",
       "html",
-    },
-  },
-  formatting.stylelint.with {
-    env = {
-      STYLELINT_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/linter-config/.stylelint.json",
-    },
-    filetypes = {
       "scss",
       "less",
       "css",
       "sass",
     },
   },
-  formatting.eslint_d.with {
-    env = {
-      ESLINT_D_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/linter-config/.eslintrc.json",
-    },
-  },
+  formatting.eslint_d,
   formatting.black.with {
     extra_args = { "--fast" },
   },
   actions.eslint_d,
   diagnostics.eslint_d,
-  diagnostics.stylelint,
   diagnostics.flake8,
   actions.gitsigns,
 }
