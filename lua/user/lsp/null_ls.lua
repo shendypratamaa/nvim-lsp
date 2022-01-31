@@ -3,10 +3,10 @@ if not status_ok then
   return
 end
 
--- PERFORMANCE: dont use eslint makin slowest editor ever !
+-- PERFORMANCE: dont use eslint CPU LOAD ISSUE!
 local formatting = null_ls.builtins.formatting
 local actions = null_ls.builtins.code_actions
--- local diagnostics = null_ls.builtins.diagnostics
+local diagnostics = null_ls.builtins.diagnostics
 
 local sources = {
   formatting.stylua.with {
@@ -17,28 +17,45 @@ local sources = {
   },
   formatting.prettierd.with {
     env = {
-      PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
+      PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/linter-config/.prettierrc.json",
     },
     filetypes = {
       "json",
       "jsonc",
       "yaml",
+      "toml",
       "markdown",
-      "css",
       "html",
     },
   },
-  formatting.black.with { extra_args = { "--fast" } },
-  formatting.eslint_d,
+  formatting.stylelint.with {
+    env = {
+      STYLELINT_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/linter-config/.stylelint.json",
+    },
+    filetypes = {
+      "scss",
+      "less",
+      "css",
+      "sass",
+    },
+  },
+  formatting.eslint_d.with {
+    env = {
+      ESLINT_D_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/linter-config/.eslintrc.json",
+    },
+  },
+  formatting.black.with {
+    extra_args = { "--fast" },
+  },
   actions.eslint_d,
+  diagnostics.eslint_d,
+  diagnostics.stylelint,
+  diagnostics.flake8,
   actions.gitsigns,
-  -- diagnostics.stylelint,
-  -- diagnostics.flake8,
-  -- diagnostics.eslint_d,
 }
 
 null_ls.setup {
-  diagnostics_format = "(#{s}) #{m}",
+  diagnostics_format = "[#{c}] #{m} (#{s})",
   debug = false,
   sources = sources,
   on_attach = function(client)
