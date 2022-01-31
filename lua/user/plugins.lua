@@ -53,7 +53,7 @@ packer.init {
 -- if autocmd load after plugins startup we must open file jsonc first
 -- but if we reattach from filetype json to jsonc commenters will be broken
 -- this is the solution where i founded, before treesitter / lspconfig fix this
-vim.cmd [[autocmd BufNewFile,BufRead tsconfig*.json setlocal filetype=jsonc]]
+vim.cmd [[autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc]]
 
 -- Install your plugins here
 return packer.startup(function(use)
