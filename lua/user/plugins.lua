@@ -81,7 +81,22 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets"
   use "saadparwaiz1/cmp_luasnip"
   use "nvim-lua/plenary.nvim"
-  use "tpope/vim-surround"
+  use {
+    "tpope/vim-surround",
+    keys = { "c", "d", "y" },
+    config = function()
+      vim.cmd "nmap ds       <Plug>Dsurround"
+      vim.cmd "nmap cs       <Plug>Csurround"
+      vim.cmd "nmap cS       <Plug>CSurround"
+      vim.cmd "nmap ys       <Plug>Ysurround"
+      vim.cmd "nmap yS       <Plug>YSurround"
+      vim.cmd "nmap yss      <Plug>Yssurround"
+      vim.cmd "nmap ySs      <Plug>YSsurround"
+      vim.cmd "nmap ySS      <Plug>YSsurround"
+      vim.cmd "xmap gs       <Plug>VSurround"
+      vim.cmd "xmap gS       <Plug>VgSurround"
+    end,
+  }
   use "b0o/SchemaStore.nvim"
 
   -- Cmp completion
