@@ -1,7 +1,7 @@
 # I'm calling this a Unicorns 🦄
 
 _This is repo migration from neovim [vim-script](https://github.com/shendypratamaa/nvimscript)_ using coc-nvim 👴<br>
-_Moving native support neovim, for language server protocol write in lua programming 🚀
+Moving native support neovim, for language server protocol write in lua programming 🚀
 
 > Feel FREE to clone this 📦<br>
 > Feel FREE to edit all of this, based on my configuration 🧛,<br>
@@ -75,7 +75,7 @@ but i think this is will work normally with some effort, find references how to 
 ### LSP Diagnostics Error 🦠
 
 <div>
-  <img src="/sources/trouble.png">
+  <img src="/sources/Trouble.png">
 </div>
 
 ---
