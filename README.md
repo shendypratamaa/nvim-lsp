@@ -1,6 +1,6 @@
 # I'm calling this a Unicorns 🦄
 
-_This is repo migration from neovim [vim-script](https://github.com/shendypratamaa/nvimscript)_ using coc-nvim 👴<br>
+This is repo migration from neovim [vim-script](https://github.com/shendypratamaa/nvimscript) using coc-nvim 👴<br>
 Moving native support neovim, for language server protocol write in lua programming 🚀
 
 > Feel FREE to clone this 📦<br>
@@ -13,7 +13,7 @@ Moving native support neovim, for language server protocol write in lua programm
   - Alacritty config inside extras folder.
 
 - Running on :
-  - Macos 12.1,
+  - Macos 12.2,
   - Neovim 0.6.1,
   - Alacritty 0.9.0,
   - Tmux 3.2a
@@ -31,7 +31,7 @@ but i think this is will work normally with some effort, find references how to 
 1. clone this repo into `git clone https://github.com/shendypratamaa/nvim-lsp\ ~/.config/nvim`
 2. run `neovim` in your terminal, or whaterver ur calling that inside ur shell config
 3. after that u need typing `:PackerInstall` inside neovim command
-4. this setup will installing plugins what we need, and create folder inside `$HOME/.local/share/nvim/site/pack/packer/` ,this is directory your plugins
+4. this setup will installing plugins what we need, and create folder inside `$HOME/.local/share/nvim/site/pack/packer/`, this is directory your plugins
 5. packer will make another folder to inside `~/.config/nvim` with the name `plugins`
 6. run `:checkhealth` first for seeing everything is work properly
 7. `everyting is ready to go 🦄`
@@ -56,7 +56,7 @@ but i think this is will work normally with some effort, find references how to 
 
 ---
 
-### LSP Diagnostics Treesitter 🌲
+### LSP References 🌲
 
 <div>
   <img src="/sources/3.png"/>
@@ -112,6 +112,30 @@ but i think this is will work normally with some effort, find references how to 
 
 ---
 
+### Telescope Bookmarks 🌎
+
+<div>
+  <img src="/sources/telescope-bookmarks.png"/>
+</div>
+
+---
+
+### Telescope File Browser 📂
+
+<div>
+  <img src="/sources/telescope-browser.png"/>
+</div>
+
+---
+
+### Telescope Packer 🏔
+
+<div>
+  <img src="/sources/telescope-packer.png"/>
+</div>
+
+---
+
 ### Zenmode 🤫
 
 <div>
@@ -128,27 +152,27 @@ but i think this is will work normally with some effort, find references how to 
 
 ---
 
-### Eslint_d 📝
+### Eslint_d 👮
 
 <div>
   <img src="/sources/eslint_d.png"/>
 </div>
 
-- im using eslint_d for formatting, code_action, diagnostics, ft js, jsx, ts, tsx
+- im using eslint_d for formatting, code_action, diagnostics, ft `js, jsx, ts, tsx`
 - dont miss that, to install globaly using npm or yarn, and add your config `$HOME/.eslintrc`
 - or put ur configuration based on existing project
 
 ---
 
-### Prettierd 📝
+### Prettierd 💅
 
 <div>
   <img src="/sources/prettierd.png"/>
 </div>
 
-- im using prettierd, for formatting, ft json, css, scss, jsonc, toml, markdown html etc
+- im using prettierd, for formatting, ft `json, css, scss, jsonc, toml, markdown html etc`
 - dont miss that, to install globally using npm or yarn
-- configuration inside dir neovim linter-config/.prettierc.json
+- configuration inside dir neovim `linter-config/.prettierc.json`
 
 ---
 
