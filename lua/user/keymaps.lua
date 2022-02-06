@@ -94,6 +94,7 @@ keymap("n", "FP", "<cmd>Telescope packer<CR>", opts)
 -- Todo-Notes
 keymap("n", "qq", "<cmd>TroubleClose<cr>", opts)
 keymap("n", "tj", "<cmd>TodoTrouble<cr>", opts)
+keymap("n", "TJ", "<cmd>TroubleToggle<cr>", opts)
 
 -- Undo-Tree
 keymap("n", "<C-p>", ":UndotreeToggle<CR>", opts)
