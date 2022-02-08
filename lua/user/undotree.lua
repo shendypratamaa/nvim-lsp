@@ -6,10 +6,10 @@ vim.g.undotree_SplitWidth = 40
 vim.g.undotree_DiffpanelHeight = 15
 vim.g.undotree_SetFocusWhenToggle = 0
 
-vim.cmd([[
+vim.cmd [[
  if has("persistent_undo")
    set hid
    set undodir=~/.cache/nvim/undodir
    set undofile
  endif
-]])
+]]
