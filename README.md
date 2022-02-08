@@ -64,14 +64,6 @@ but i think this is will work normally with some effort, find references how to 
 
 ---
 
-### Markdown Instant Preview - Hot Reaload 🌭
-
-<div>
-  <img src="/sources/4.png"/>
-</div>
-
----
-
 ### LSP Diagnostics Error 🦠
 
 <div>
@@ -173,6 +165,14 @@ but i think this is will work normally with some effort, find references how to 
 - im using prettierd, for formatting, ft `json, css, scss, jsonc, toml, markdown html etc`
 - dont miss that, to install globally using npm or yarn
 - configuration inside dir neovim `linter-config/.prettierc.json`
+
+---
+
+### Markdown Instant Preview - Hot Reaload 🌭
+
+<div>
+  <img src="/sources/4.png"/>
+</div>
 
 ---
 
