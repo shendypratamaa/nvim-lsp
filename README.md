@@ -185,3 +185,4 @@ but i think this is will work normally with some effort, find references how to 
 ---
 
 ### Still Maintained 🦄
+### sh*t not working for apple silicon !
