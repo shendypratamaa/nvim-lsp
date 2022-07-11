@@ -27,7 +27,7 @@ but i think this is will work normally with some effort, find references how to 
 3. [Alacritty](https://github.com/alacritty/alacritty)
 
 ### Installation 🗂️
-1. clone this repo into `git clone https://github.com/shendypratamaa/nvim-lsp\ ~/.config/nvim`
+1. clone this repo into `git clone https://github.com/shendypratamaa/nvim-lsp ~/.config/nvim`
 2. run `neovim` in your terminal, or whaterver ur calling that inside ur shell config
 3. after that u need typing `:PackerInstall` inside neovim command
 4. this setup will installing plugins what we need, and create folder inside `$HOME/.local/share/nvim/site/pack/packer/`, this is directory your plugins
